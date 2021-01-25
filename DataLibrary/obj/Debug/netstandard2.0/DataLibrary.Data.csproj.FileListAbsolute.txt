@@ -1,0 +1,4 @@
+C:\Users\valib\Desktop\Advanced C#\BookingAPI\DataLibrary\obj\Debug\netstandard2.0\DataLibrary.Data.csprojAssemblyReference.cache
+C:\Users\valib\Desktop\Advanced C#\BookingAPI\DataLibrary\obj\Debug\netstandard2.0\DataLibrary.Data.AssemblyInfoInputs.cache
+C:\Users\valib\Desktop\Advanced C#\BookingAPI\DataLibrary\obj\Debug\netstandard2.0\DataLibrary.Data.AssemblyInfo.cs
+C:\Users\valib\Desktop\Advanced C#\BookingAPI\DataLibrary\obj\Debug\netstandard2.0\DataLibrary.Data.csproj.CoreCompileInputs.cache

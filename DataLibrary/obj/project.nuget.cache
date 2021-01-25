@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "grEQRPXMzMnsdtngZ1Eu0oZ6z0hukE8qh4XDFPE0HTpKjbga0lAxbnql8UwEUARYZkQ+lO3bosf1hqgcWYZFmg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\DataLibrary\\DataLibrary.Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\valib\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\valib\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
