@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EfCoreRelations.Data.Models
@@ -10,12 +11,17 @@ namespace EfCoreRelations.Data.Models
     public class Appoinment
     {
         public int Id { get; set; }
-        public int BussinessId { get; set; }
+
+        [ForeignKey("BussinessId")]
+        public int? BussinessId { get; set; }
         public Bussiness Bussiness { get; set; }
-        public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public int? UserId { get; set; }
         public User User { get; set; }
 
-        public int EmployeeId { get; set; }
+        [ForeignKey("EmployeeId")]
+        public int? EmployeeId { get; set; }
         public Employee Employee { get; set; }
         public DateTime Date { get; set; }
 
@@ -40,7 +46,7 @@ namespace EfCoreRelations.Data.Models
 
             builder.HasOne(x => x.Employee)
                 .WithMany(x => x.Appoinments)
-                .HasForeignKey(x => x.EmployeeId);
+                .HasForeignKey(x=>x.EmployeeId);
         }
     }
 

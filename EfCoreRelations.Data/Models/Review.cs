@@ -30,7 +30,7 @@ namespace EfCoreRelations.Data.Models
             builder.Property(x => x.UserId).HasColumnType("int");
             builder.Property(x => x.BussinessId).HasColumnType("int");
 
-            
+            builder.HasOne(x => x.Bussiness).WithMany(x => x.Reviews).HasForeignKey(x => x.BussinessId);
 
         }
     }

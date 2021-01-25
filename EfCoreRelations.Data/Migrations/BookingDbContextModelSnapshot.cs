@@ -79,16 +79,16 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("BussinessId")
+                    b.Property<int?>("BussinessId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -340,21 +340,15 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Bussiness", "Bussiness")
                         .WithMany("Appoinments")
-                        .HasForeignKey("BussinessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BussinessId");
 
                     b.HasOne("EfCoreRelations.Data.Models.Employee", "Employee")
                         .WithMany("Appoinments")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("BookingAPI.Models.User", "User")
                         .WithMany("Appoinments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Bussiness");
 

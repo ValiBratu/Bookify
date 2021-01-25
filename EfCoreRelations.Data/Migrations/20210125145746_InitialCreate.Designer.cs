@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreRelations.Data.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20210125115539_InitialCreate")]
+    [Migration("20210125145746_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,16 +81,16 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("BussinessId")
+                    b.Property<int?>("BussinessId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -342,21 +342,15 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Bussiness", "Bussiness")
                         .WithMany("Appoinments")
-                        .HasForeignKey("BussinessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BussinessId");
 
                     b.HasOne("EfCoreRelations.Data.Models.Employee", "Employee")
                         .WithMany("Appoinments")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.HasOne("BookingAPI.Models.User", "User")
                         .WithMany("Appoinments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Bussiness");
 

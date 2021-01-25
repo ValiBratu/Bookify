@@ -22,7 +22,7 @@ namespace EfCoreRelations.Data.Models
         {
             builder.Property(x => x.Name).HasColumnType("nvarchar(250)");
 
-            builder.HasMany(x => x.Bussinesses);
+            builder.HasMany(x => x.Bussinesses).WithOne(x => x.City).HasForeignKey(x => x.CityId);
 
         }
     }
