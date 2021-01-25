@@ -24,6 +24,8 @@ namespace BookingAPI.Models
 
         public ICollection<Appoinment> Appoinments { get; set; }
 
+        public ICollection<Review> Reviews { get; set; }
+
     }
 
     public class UserEntityConfiguration : IEntityTypeConfiguration<User>
@@ -40,6 +42,8 @@ namespace BookingAPI.Models
                 .WithMany(x => x.User);
 
             builder.HasMany(x => x.Appoinments).WithOne(x => x.User).HasForeignKey(x => x.UserId);
+
+            builder.HasMany(x => x.Reviews).WithOne(x => x.User).HasForeignKey(x => x.UserId);
     }
     }
 

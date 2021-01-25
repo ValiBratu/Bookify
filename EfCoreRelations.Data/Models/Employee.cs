@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EfCoreRelations.Data.Models
@@ -11,10 +12,13 @@ namespace EfCoreRelations.Data.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int BussinessId { get; set; }
+
+        [ForeignKey("BussinessId")]
+        public int? BussinessId { get; set; }
         public string Link { get; set; }
 
-        public int ServiceId { get; set; }
+        [ForeignKey("ServiceId")]
+        public int? ServiceId { get; set; }
         public ICollection<Service> Services { get; set; }
 
         public Bussiness Bussiness { get; set; }

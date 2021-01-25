@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EfCoreRelations.Data.Models
@@ -11,8 +12,11 @@ namespace EfCoreRelations.Data.Models
 
         public int Id { get; set; }
 
-        public int BussinessId { get; set; }
-        public int UserId { get; set; }
+        [ForeignKey("BussinessId")]
+        public int? BussinessId { get; set; }
+
+        [ForeignKey("ServiceId")]
+        public int? ServiceId { get; set; }
         public float Value { get; set; }
 
 
@@ -23,8 +27,10 @@ namespace EfCoreRelations.Data.Models
         public void Configure(EntityTypeBuilder<Price> builder)
         {
             builder.Property(x => x.BussinessId).HasColumnType("int");
-            builder.Property(x => x.UserId).HasColumnType("int");
+            builder.Property(x => x.ServiceId).HasColumnType("int");
             builder.Property(x => x.Value).HasColumnType("float");
+
+
 
         }
     }

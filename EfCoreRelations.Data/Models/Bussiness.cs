@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -11,15 +12,21 @@ namespace EfCoreRelations.Data.Models
     public class Bussiness
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public int? UserId { get; set; }
         
         public string Name { get; set; }
         public string Email { get; set; }
-        public int CityId { get; set; }
+
+        [ForeignKey("CityId")]
+        public int? CityId { get; set; }
         public City City { get; set; }
         public string Location { get; set; }
         public string NrTelefon { get; set; }
-        public int CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public int? CategoryId { get; set; }
         public Category Category { get; set; }
         public string Description { get; set; }
         public float Ratring { get; set; }

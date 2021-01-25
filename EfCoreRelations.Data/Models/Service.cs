@@ -24,6 +24,7 @@ namespace EfCoreRelations.Data.Models
             builder.Property(x => x.Name).HasColumnType("nvarchar(250)");
             builder.Property(x => x.Duration).HasColumnType("int");
 
+           
         }
     }
 }

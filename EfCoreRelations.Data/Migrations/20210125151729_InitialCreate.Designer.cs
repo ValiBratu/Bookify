@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreRelations.Data.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20210125145746_InitialCreate")]
+    [Migration("20210125151729_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -111,10 +111,10 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CityId")
+                    b.Property<int?>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -135,7 +135,7 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<double>("Ratring")
                         .HasColumnType("float");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -206,7 +206,7 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("BussinessId")
+                    b.Property<int?>("BussinessId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -218,7 +218,7 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<int>("ServiceId")
+                    b.Property<int?>("ServiceId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -253,10 +253,10 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("BussinessId")
+                    b.Property<int?>("BussinessId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("ServiceId")
                         .HasColumnType("int");
 
                     b.Property<double>("Value")
@@ -274,7 +274,7 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("BussinessId")
+                    b.Property<int?>("BussinessId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -286,12 +286,14 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BussinessId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
                 });
@@ -363,15 +365,11 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Category", "Category")
                         .WithMany("Bussinesses")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("EfCoreRelations.Data.Models.City", "City")
                         .WithMany("Bussinesses")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CityId");
 
                     b.Navigation("Category");
 
@@ -397,9 +395,7 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Bussiness", "Bussiness")
                         .WithMany("Employee")
-                        .HasForeignKey("BussinessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BussinessId");
 
                     b.Navigation("Bussiness");
                 });
@@ -408,11 +404,15 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Bussiness", "Bussiness")
                         .WithMany("Reviews")
-                        .HasForeignKey("BussinessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BussinessId");
+
+                    b.HasOne("BookingAPI.Models.User", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Bussiness");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("EmployeeService", b =>
@@ -433,6 +433,8 @@ namespace EfCoreRelations.Data.Migrations
             modelBuilder.Entity("BookingAPI.Models.User", b =>
                 {
                     b.Navigation("Appoinments");
+
+                    b.Navigation("Reviews");
                 });
 
             modelBuilder.Entity("BookingAPI.Models.UserType", b =>
