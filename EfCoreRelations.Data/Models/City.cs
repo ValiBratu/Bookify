@@ -20,9 +20,7 @@ namespace EfCoreRelations.Data.Models
     {
         public void Configure(EntityTypeBuilder<City> builder)
         {
-            builder.Property(x => x.Name).HasColumnType("nvarchar(250)");
 
-            builder.HasMany(x => x.Bussinesses).WithOne(x => x.City).HasForeignKey(x => x.CityId);
 
         }
     }

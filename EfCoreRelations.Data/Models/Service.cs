@@ -21,8 +21,7 @@ namespace EfCoreRelations.Data.Models
     {
         public void Configure(EntityTypeBuilder<Service> builder)
         {
-            builder.Property(x => x.Name).HasColumnType("nvarchar(250)");
-            builder.Property(x => x.Duration).HasColumnType("int");
+
 
            
         }

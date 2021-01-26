@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -10,7 +11,9 @@ namespace EfCoreRelations.Data.Models
      public class Employee
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
+        
         public string Description { get; set; }
 
         [ForeignKey("BussinessId")]
@@ -29,18 +32,7 @@ namespace EfCoreRelations.Data.Models
     {
         public void Configure(EntityTypeBuilder<Employee> builder)
         {
-            builder.Property(x => x.Name).HasColumnType("nvarchar(250)");
-            builder.Property(x => x.Description).HasColumnType("nvarchar(max)");
-            builder.Property(x => x.BussinessId).HasColumnType("int");
-
-            builder.HasOne(x => x.Bussiness).WithMany(x => x.Employee).HasForeignKey(x => x.BussinessId);
-
-           
-
-            builder.HasMany(x => x.Appoinments)
-                .WithOne(x => x.Employee).HasForeignKey(x => x.EmployeeId);
-
-
+         
         }
     }
 }

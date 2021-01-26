@@ -32,17 +32,7 @@ namespace EfCoreRelations.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new UserTypeEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new CityEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new BussinessServiceEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new ServiceEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new AppoinmentEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new BussinessEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeeEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new ReviewEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new EmployeeServiceEntityConfiguration());
+
         }
     }
 }

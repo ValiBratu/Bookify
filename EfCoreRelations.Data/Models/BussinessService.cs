@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EfCoreRelations.Data.Models
@@ -13,6 +14,7 @@ namespace EfCoreRelations.Data.Models
 
         public int ServiceId { get; set; }
 
+        [Column( TypeName = "decimal")]
         public Decimal ServicePrice { get; set; }
 
 
@@ -23,7 +25,7 @@ namespace EfCoreRelations.Data.Models
 
         public void Configure(EntityTypeBuilder<BussinessService> builder)
         {
-            builder.Property(x => x.ServicePrice).HasColumnType("decimal");
+
         }
     }
 

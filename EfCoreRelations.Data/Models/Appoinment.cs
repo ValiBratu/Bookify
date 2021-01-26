@@ -13,16 +13,18 @@ namespace EfCoreRelations.Data.Models
         public int Id { get; set; }
 
         [ForeignKey("BussinessId")]
-        public int? BussinessId { get; set; }
+        public int BussinessId { get; set; }
         public Bussiness Bussiness { get; set; }
 
         [ForeignKey("UserId")]
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
 
         [ForeignKey("EmployeeId")]
-        public int? EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
+
+        [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
 
     }
@@ -31,22 +33,7 @@ namespace EfCoreRelations.Data.Models
     {
         public void Configure(EntityTypeBuilder<Appoinment> builder)
         {
-            builder.Property(x => x.BussinessId).HasColumnType("int");
-            builder.Property(x => x.UserId).HasColumnType("int");
-            builder.Property(x => x.Date).HasColumnType("datetime");
-            builder.Property(x => x.EmployeeId).HasColumnType("int");
 
-            builder.HasOne(x => x.Bussiness)
-                .WithMany(x => x.Appoinments)
-                .HasForeignKey(x => x.BussinessId);
-
-            builder.HasOne(x => x.User)
-                .WithMany(x => x.Appoinments)
-                .HasForeignKey(x => x.UserId);
-
-            builder.HasOne(x => x.Employee)
-                .WithMany(x => x.Appoinments)
-                .HasForeignKey(x=>x.EmployeeId);
         }
     }
 

@@ -27,19 +27,19 @@ namespace EfCoreRelations.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NrTelefon")
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
@@ -62,7 +62,7 @@ namespace EfCoreRelations.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -79,16 +79,16 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("BussinessId")
+                    b.Property<int>("BussinessId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -109,31 +109,31 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NrTelefon")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Ratring")
-                        .HasColumnType("float");
+                    b.Property<float>("Ratring")
+                        .HasColumnType("real");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -178,7 +178,7 @@ namespace EfCoreRelations.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -193,7 +193,7 @@ namespace EfCoreRelations.Data.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -217,7 +217,8 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(250)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ServiceId")
                         .HasColumnType("int");
@@ -261,7 +262,7 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int?>("BussinessId")
+                    b.Property<int>("BussinessId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -271,9 +272,9 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -296,7 +297,7 @@ namespace EfCoreRelations.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(250)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -316,15 +317,21 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Bussiness", "Bussiness")
                         .WithMany("Appoinments")
-                        .HasForeignKey("BussinessId");
+                        .HasForeignKey("BussinessId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EfCoreRelations.Data.Models.Employee", "Employee")
                         .WithMany("Appoinments")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BookingAPI.Models.User", "User")
                         .WithMany("Appoinments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Bussiness");
 
@@ -337,11 +344,15 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Category", "Category")
                         .WithMany("Bussinesses")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("EfCoreRelations.Data.Models.City", "City")
                         .WithMany("Bussinesses")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 
@@ -389,11 +400,15 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Bussiness", "Bussiness")
                         .WithMany("Reviews")
-                        .HasForeignKey("BussinessId");
+                        .HasForeignKey("BussinessId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("BookingAPI.Models.User", "User")
                         .WithMany("Reviews")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Bussiness");
 

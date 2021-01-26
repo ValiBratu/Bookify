@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,7 @@ namespace BookingAPI.Models
 
         public string Name { get; set; }
 
+        [ForeignKey("UserId")]
         public int UserId { get; set; }
 
        public ICollection<User> User { get; set; }
@@ -24,9 +26,7 @@ namespace BookingAPI.Models
 
         public void Configure(EntityTypeBuilder<UserType> builder)
         {
-            builder.Property(x => x.Name).HasColumnType("nvarchar(200)");
-
-            builder.HasMany(c => c.User).WithOne(e => e.UserType);
+            
 
         }
     }

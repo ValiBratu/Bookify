@@ -18,11 +18,11 @@ namespace EfCoreRelations.Data.Models
         public int Rating { get; set; }
 
         [ForeignKey("UserId")]
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
 
         [ForeignKey("BussinessId")]
-        public int? BussinessId { get; set; }
+        public int BussinessId { get; set; }
         public Bussiness Bussiness { get; set; }
 
     }
@@ -31,15 +31,8 @@ namespace EfCoreRelations.Data.Models
     {
         public void Configure(EntityTypeBuilder<Review> builder)
         {
-            builder.Property(x => x.Description).HasColumnType("nvarchar(max)");
-            builder.Property(x => x.Title).HasColumnType("nvarchar(100)");
-            builder.Property(x => x.Rating).HasColumnType("int");
-            builder.Property(x => x.UserId).HasColumnType("int");
-            builder.Property(x => x.BussinessId).HasColumnType("int");
 
-            builder.HasOne(x => x.Bussiness).WithMany(x => x.Reviews).HasForeignKey(x => x.BussinessId);
 
-            builder.HasOne(x => x.User).WithMany(x => x.Reviews).HasForeignKey(x => x.UserId);
 
         }
     }
