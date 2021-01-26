@@ -6,12 +6,14 @@ export class Counter extends Component {
   constructor(props) {
     super(props);
     this.state = { currentCount: 0 };
-    this.incrementCounter = this.incrementCounter.bind(this);
+      this.incrementCounter = this.incrementCounter.bind(this);
+      console.log("merge");
   }
 
   incrementCounter() {
     this.setState({
-      currentCount: this.state.currentCount + 1
+        currentCount: this.state.currentCount + 1
+
     });
   }
 
