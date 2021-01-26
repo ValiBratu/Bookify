@@ -19,7 +19,7 @@ namespace EfCoreRelations.Data.Models
 
         [ForeignKey("ServiceId")]
         public int? ServiceId { get; set; }
-        public ICollection<Service> Services { get; set; }
+        public ICollection<EmployeeService> Services { get; set; }
 
         public Bussiness Bussiness { get; set; }
         public ICollection<Appoinment> Appoinments { get; set; }
@@ -35,7 +35,7 @@ namespace EfCoreRelations.Data.Models
 
             builder.HasOne(x => x.Bussiness).WithMany(x => x.Employee).HasForeignKey(x => x.BussinessId);
 
-            builder.HasMany(x => x.Services).WithMany(x => x.Employees);
+           
 
             builder.HasMany(x => x.Appoinments)
                 .WithOne(x => x.Employee).HasForeignKey(x => x.EmployeeId);

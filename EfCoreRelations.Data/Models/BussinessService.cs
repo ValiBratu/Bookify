@@ -12,6 +12,10 @@ namespace EfCoreRelations.Data.Models
         public int BussinessId { get; set; }
 
         public int ServiceId { get; set; }
+
+        public Decimal ServicePrice { get; set; }
+
+
     }
 
     public class BussinessServiceEntityConfiguration : IEntityTypeConfiguration<BussinessService>
@@ -19,7 +23,7 @@ namespace EfCoreRelations.Data.Models
 
         public void Configure(EntityTypeBuilder<BussinessService> builder)
         {
-            
+            builder.Property(x => x.ServicePrice).HasColumnType("decimal");
         }
     }
 

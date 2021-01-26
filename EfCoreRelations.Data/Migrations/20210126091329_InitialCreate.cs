@@ -34,35 +34,6 @@ namespace EfCoreRelations.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeeServices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BussinessId = table.Column<int>(type: "int", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeeServices", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Prices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BussinessId = table.Column<int>(type: "int", nullable: true),
-                    ServiceId = table.Column<int>(type: "int", nullable: true),
-                    Value = table.Column<double>(type: "float", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Prices", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Services",
                 columns: table => new
                 {
@@ -155,7 +126,8 @@ namespace EfCoreRelations.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BussinessId = table.Column<int>(type: "int", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false)
+                    ServiceId = table.Column<int>(type: "int", nullable: false),
+                    ServicePrice = table.Column<decimal>(type: "decimal", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -261,24 +233,27 @@ namespace EfCoreRelations.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeeService",
+                name: "EmployeeServices",
                 columns: table => new
                 {
-                    EmployeesId = table.Column<int>(type: "int", nullable: false),
-                    ServicesId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BussinessId = table.Column<int>(type: "int", nullable: false),
+                    ServiceId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmployeeService", x => new { x.EmployeesId, x.ServicesId });
+                    table.PrimaryKey("PK_EmployeeServices", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EmployeeService_Employees_EmployeesId",
-                        column: x => x.EmployeesId,
+                        name: "FK_EmployeeServices_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EmployeeService_Services_ServicesId",
-                        column: x => x.ServicesId,
+                        name: "FK_EmployeeServices_Services_ServiceId",
+                        column: x => x.ServiceId,
                         principalTable: "Services",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -325,9 +300,14 @@ namespace EfCoreRelations.Data.Migrations
                 column: "BussinessId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeService_ServicesId",
-                table: "EmployeeService",
-                column: "ServicesId");
+                name: "IX_EmployeeServices_EmployeeId",
+                table: "EmployeeServices",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmployeeServices_ServiceId",
+                table: "EmployeeServices",
+                column: "ServiceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reviews_BussinessId",
@@ -354,13 +334,7 @@ namespace EfCoreRelations.Data.Migrations
                 name: "BussinessServices");
 
             migrationBuilder.DropTable(
-                name: "EmployeeService");
-
-            migrationBuilder.DropTable(
                 name: "EmployeeServices");
-
-            migrationBuilder.DropTable(
-                name: "Prices");
 
             migrationBuilder.DropTable(
                 name: "Reviews");

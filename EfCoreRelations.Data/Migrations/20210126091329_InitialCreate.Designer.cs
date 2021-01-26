@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreRelations.Data.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20210125151729_InitialCreate")]
+    [Migration("20210126091329_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -160,6 +160,9 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("ServicePrice")
+                        .HasColumnType("decimal");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BussinessId");
@@ -238,33 +241,19 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<int>("BussinessId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ServiceId");
+
                     b.ToTable("EmployeeServices");
-                });
-
-            modelBuilder.Entity("EfCoreRelations.Data.Models.Price", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int?>("BussinessId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Prices");
                 });
 
             modelBuilder.Entity("EfCoreRelations.Data.Models.Review", b =>
@@ -314,21 +303,6 @@ namespace EfCoreRelations.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Services");
-                });
-
-            modelBuilder.Entity("EmployeeService", b =>
-                {
-                    b.Property<int>("EmployeesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServicesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmployeesId", "ServicesId");
-
-                    b.HasIndex("ServicesId");
-
-                    b.ToTable("EmployeeService");
                 });
 
             modelBuilder.Entity("BookingAPI.Models.User", b =>
@@ -400,6 +374,19 @@ namespace EfCoreRelations.Data.Migrations
                     b.Navigation("Bussiness");
                 });
 
+            modelBuilder.Entity("EfCoreRelations.Data.Models.EmployeeService", b =>
+                {
+                    b.HasOne("EfCoreRelations.Data.Models.Employee", null)
+                        .WithMany("Services")
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("EfCoreRelations.Data.Models.Service", null)
+                        .WithMany("Employees")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("EfCoreRelations.Data.Models.Review", b =>
                 {
                     b.HasOne("EfCoreRelations.Data.Models.Bussiness", "Bussiness")
@@ -413,21 +400,6 @@ namespace EfCoreRelations.Data.Migrations
                     b.Navigation("Bussiness");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("EmployeeService", b =>
-                {
-                    b.HasOne("EfCoreRelations.Data.Models.Employee", null)
-                        .WithMany()
-                        .HasForeignKey("EmployeesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EfCoreRelations.Data.Models.Service", null)
-                        .WithMany()
-                        .HasForeignKey("ServicesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("BookingAPI.Models.User", b =>
@@ -466,11 +438,15 @@ namespace EfCoreRelations.Data.Migrations
             modelBuilder.Entity("EfCoreRelations.Data.Models.Employee", b =>
                 {
                     b.Navigation("Appoinments");
+
+                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("EfCoreRelations.Data.Models.Service", b =>
                 {
                     b.Navigation("BussinessServices");
+
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

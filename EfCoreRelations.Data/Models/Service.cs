@@ -13,7 +13,7 @@ namespace EfCoreRelations.Data.Models
 
         public int Duration { get; set; }
 
-        public ICollection<Employee> Employees { get; set; }
+        public ICollection<EmployeeService> Employees { get; set; }
         public IList<BussinessService> BussinessServices { get; set; }
     }
 

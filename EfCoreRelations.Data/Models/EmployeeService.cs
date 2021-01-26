@@ -12,6 +12,9 @@ namespace EfCoreRelations.Data.Models
         public int BussinessId { get; set; }
 
         public int ServiceId { get; set; }
+
+        
+
     }
 
     public class EmployeeServiceEntityConfiguration : IEntityTypeConfiguration<EmployeeService>

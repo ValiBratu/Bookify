@@ -23,7 +23,7 @@ namespace EfCoreRelations.Data
         public DbSet<Service> Services { get; set; }
         public DbSet<Appoinment> Appoinments { get; set; }
         public DbSet<Bussiness> Bussinesses { get; set; }
-        public DbSet<Price> Prices { get; set; }
+
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
@@ -40,7 +40,6 @@ namespace EfCoreRelations.Data
             modelBuilder.ApplyConfiguration(new ServiceEntityConfiguration());
             modelBuilder.ApplyConfiguration(new AppoinmentEntityConfiguration());
             modelBuilder.ApplyConfiguration(new BussinessEntityConfiguration());
-            modelBuilder.ApplyConfiguration(new PriceEntityConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeEntityConfiguration());
             modelBuilder.ApplyConfiguration(new ReviewEntityConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeServiceEntityConfiguration());
