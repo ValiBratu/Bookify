@@ -1,34 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj": {}
+    "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\BookingAPI\\BookingAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj": {
+    "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\BookingAPI\\BookingAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\BookingAPI\\BookingAPI.csproj",
         "projectName": "BookingAPI",
-        "projectPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj",
-        "packagesPath": "C:\\Users\\valib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\obj\\",
+        "projectPath": "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\BookingAPI\\BookingAPI.csproj",
+        "packagesPath": "C:\\Users\\Bogdan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\BookingAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\valib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bogdan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
-                "projectPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj"
+              "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
+                "projectPath": "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj"
               }
             }
           }
@@ -40,7 +41,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -56,7 +58,7 @@
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[3.1.11, )"
+              "version": "[5.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -66,7 +68,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[3.1.4, )"
+              "version": "[5.0.1, )"
             }
           },
           "imports": [
@@ -87,32 +89,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
+    "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
         "projectName": "EfCoreRelations.Data",
-        "projectPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
-        "packagesPath": "C:\\Users\\valib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\obj\\",
+        "projectPath": "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
+        "packagesPath": "C:\\Users\\Bogdan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bogdan\\Desktop\\CodeCool.NET\\TW4.2\\Bookify\\EfCoreRelations.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\valib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bogdan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -123,7 +126,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -159,7 +163,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

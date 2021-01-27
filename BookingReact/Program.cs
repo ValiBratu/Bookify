@@ -23,4 +23,7 @@ namespace BookingReact
                     webBuilder.UseStartup<Startup>();
                 });
     }
+
+
+
 }

@@ -14,11 +14,6 @@ namespace BookingAPI.Models
 
         public string Name { get; set; }
 
-        [ForeignKey("UserId")]
-        public int UserId { get; set; }
-
-       public ICollection<User> User { get; set; }
-
     }
 
     public class UserTypeEntityConfiguration : IEntityTypeConfiguration<UserType>

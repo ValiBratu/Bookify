@@ -1,0 +1,15 @@
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.AssemblyInfoInputs.cache
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.AssemblyInfo.cs
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.csproj.CoreCompileInputs.cache
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\bin\Debug\net5.0\EfCoreRelations.Data.deps.json
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\bin\Debug\net5.0\EfCoreRelations.Data.runtimeconfig.json
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\bin\Debug\net5.0\EfCoreRelations.Data.runtimeconfig.dev.json
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\bin\Debug\net5.0\EfCoreRelations.Data.dll
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\bin\Debug\net5.0\ref\EfCoreRelations.Data.dll
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\bin\Debug\net5.0\EfCoreRelations.Data.pdb
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.dll
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\ref\EfCoreRelations.Data.dll
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.pdb
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.genruntimeconfig.cache
+C:\Users\Bogdan\Desktop\CodeCool.NET\TW4.2\Bookify\EfCoreRelations.Data\obj\Debug\net5.0\EfCoreRelations.Data.csprojAssemblyReference.cache

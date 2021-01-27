@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BookingAPI",
+    "\\BookingReact",
+    "\\DataLibrary",
+    "\\EfCoreRelations.Data",
+    "\\EfCoreRelations.Data\\Migrations",
+    "\\EfCoreRelations.Data\\Models"
+  ],
+  "SelectedNode": "\\BookingAPI.sln",
+  "PreviewInSolutionExplorer": false
+}

@@ -64,9 +64,6 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("UserTypes");
@@ -130,7 +127,10 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<string>("NrTelefon")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Ratring")
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Rating")
                         .HasColumnType("real");
 
                     b.Property<int>("UserId")
@@ -220,6 +220,9 @@ namespace EfCoreRelations.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("ServiceId")
                         .HasColumnType("int");
 
@@ -307,7 +310,7 @@ namespace EfCoreRelations.Data.Migrations
             modelBuilder.Entity("BookingAPI.Models.User", b =>
                 {
                     b.HasOne("BookingAPI.Models.UserType", "UserType")
-                        .WithMany("User")
+                        .WithMany()
                         .HasForeignKey("UserTypeId");
 
                     b.Navigation("UserType");
@@ -420,11 +423,6 @@ namespace EfCoreRelations.Data.Migrations
                     b.Navigation("Appoinments");
 
                     b.Navigation("Reviews");
-                });
-
-            modelBuilder.Entity("BookingAPI.Models.UserType", b =>
-                {
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("EfCoreRelations.Data.Models.Bussiness", b =>

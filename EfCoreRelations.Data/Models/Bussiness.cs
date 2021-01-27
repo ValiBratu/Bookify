@@ -33,7 +33,10 @@ namespace EfCoreRelations.Data.Models
 
 
         public string Description { get; set; }
-        public float Ratring { get; set; }
+        public float Rating { get; set; }
+
+        public string Photo { get; set; }
+
         public ICollection<Review> Reviews { get; set; }
 
         public ICollection<Employee> Employee { get; set; }

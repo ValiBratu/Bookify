@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreRelations.Data.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20210126113916_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210127101101_Remove_UserId_From_UserType_Table")]
+    partial class Remove_UserId_From_UserType_Table
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,9 +65,6 @@ namespace EfCoreRelations.Data.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -309,7 +306,7 @@ namespace EfCoreRelations.Data.Migrations
             modelBuilder.Entity("BookingAPI.Models.User", b =>
                 {
                     b.HasOne("BookingAPI.Models.UserType", "UserType")
-                        .WithMany("User")
+                        .WithMany()
                         .HasForeignKey("UserTypeId");
 
                     b.Navigation("UserType");
@@ -422,11 +419,6 @@ namespace EfCoreRelations.Data.Migrations
                     b.Navigation("Appoinments");
 
                     b.Navigation("Reviews");
-                });
-
-            modelBuilder.Entity("BookingAPI.Models.UserType", b =>
-                {
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("EfCoreRelations.Data.Models.Bussiness", b =>
