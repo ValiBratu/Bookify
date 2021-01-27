@@ -22,6 +22,9 @@ namespace EfCoreRelations.Data.Models
 
         [ForeignKey("ServiceId")]
         public int? ServiceId { get; set; }
+
+        public string Photo { get; set; }
+
         public ICollection<EmployeeService> Services { get; set; }
 
         public Bussiness Bussiness { get; set; }

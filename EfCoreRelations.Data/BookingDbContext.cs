@@ -32,7 +32,7 @@ namespace EfCoreRelations.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+          
         }
     }
 }

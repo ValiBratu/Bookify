@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using static System.Net.Mime.MediaTypeNames;
@@ -31,9 +32,12 @@ namespace EfCoreRelations.Data.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
-
+        [Required]
         public string Description { get; set; }
-        public float Ratring { get; set; }
+        public float Rating { get; set; }
+
+        public string Photo { get; set; }
+
         public ICollection<Review> Reviews { get; set; }
 
         public ICollection<Employee> Employee { get; set; }
