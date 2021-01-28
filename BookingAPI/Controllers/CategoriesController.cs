@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using EfCoreRelations.Data;
 using EfCoreRelations.Data.Models;
 
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+
 namespace BookingAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -23,8 +27,10 @@ namespace BookingAPI.Controllers
 
         // GET: api/Categories
         [HttpGet]
+        [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
+           
             return await _context.Categories.ToListAsync();
         }
 
