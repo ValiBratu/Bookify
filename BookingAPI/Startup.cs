@@ -14,7 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace BookingAPI
-{    
+{
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -29,7 +29,7 @@ namespace BookingAPI
         {
             services.AddControllers();
             services.AddDbContext<BookingDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("BookingDbContext")));
-
+            services.AddCors();
 
         }
 
@@ -40,6 +40,12 @@ namespace BookingAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(x => x
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(origin => true) // allow any origin
+               .AllowCredentials());
 
             app.UseHttpsRedirection();
 

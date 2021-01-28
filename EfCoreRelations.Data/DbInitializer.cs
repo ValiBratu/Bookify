@@ -83,7 +83,7 @@ namespace EfCoreRelations.Data
                 {
                     FirstName= "Karin",
                     LastName= "Hopper",
-                    TypeId= 4,
+                    TypeId= 1,
                     Email= "karinhopper@farmex.com",
                     NrTelefon= "+40 (889) 555-3238",
                     Password= "12345"
@@ -94,7 +94,7 @@ namespace EfCoreRelations.Data
                     FirstName="Cort",
                     LastName="Caplen",
                     Email="ccaplen0@va.gov",
-                    TypeId=5,
+                    TypeId=2,
                     NrTelefon="+1 815 355 6522",
                     Password="fM100s8khu7d"
                 },
@@ -103,7 +103,7 @@ namespace EfCoreRelations.Data
                     FirstName="Jacqueline",
                     LastName="Scurrell",
                     Email="jscurrell1@techcrunch.com",
-                    TypeId=5,
+                    TypeId=2,
                     NrTelefon="+52 259 425 1371",
                     Password="nfIElu0sUf"
                 }

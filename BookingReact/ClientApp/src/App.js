@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+//import { Route, Router } from 'react-router';
+//import PropTypes from 'prop-types';
 
-import './custom.css'
+import NavMenu from './components/NavMenu';
+import Categories from './components/Categories';
+import SimpleMenu from './components/NavMenu';
+import './components/NavMenu.css'
 
-export default class App extends Component {
-  static displayName = App.name;
+function App() {
 
-  render () {
+
     return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetch-data' component={FetchData} />
-      </Layout>
+        <div className="App">
+
+                <NavMenu></NavMenu>
+
+        </div>
+
     );
-  }
+
 }
+export default App;
