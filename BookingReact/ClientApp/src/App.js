@@ -1,22 +1,46 @@
-import React, { Component } from 'react';
 //import { Route, Router } from 'react-router';
 //import PropTypes from 'prop-types';
-
-import NavMenu from './components/NavMenu';
+import { HashRouter, Route, BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import Categories from './components/Categories';
-import SimpleMenu from './components/NavMenu';
-import './components/NavMenu.css'
+import PropTypes from 'prop-types';
+import Bussinesses from './components/Bussiness';
+import NavMenu from './components/NavMenu';
 
 function App() {
 
 
     return (
-        <div className="App">
+        <Router>
+            <div>
+                <Switch>
+                    <Route exact path="/" >
+                        <NavMenu></NavMenu>
+                        <Categories></Categories>
+                    </Route>
 
-                <NavMenu></NavMenu>
+                    <Route exact path="/BeautySallons"  >
+                        <NavMenu></NavMenu>
+                        <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/1%22%7D%3E</Bussinesses>"}/>
+                </Route>
 
+                    <Route exact path="/Gyms"  >
+                        <NavMenu></NavMenu>
+                            <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/2%22%7D%3E</Bussinesses>"}/>
+                </Route>
+
+                    <Route exact path="/BarberShops"  >
+                        <NavMenu></NavMenu>
+                                <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/3%22%7D%3E</Bussinesses>"}/>
+                </Route>
+
+                    <Route exact path="/bussiness/{id}"  >
+                        <NavMenu></NavMenu>
+                                    <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/3%22%7D%3E</Bussinesses>"}/>
+                </Route>
+            </Switch>
         </div>
-
+    </Router>
     );
 
 }
