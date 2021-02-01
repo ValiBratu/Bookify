@@ -106,5 +106,10 @@ namespace BookingAPI.Controllers
         {
             return _context.Bussinesses.Any(e => e.Id == id);
         }
+
+   
+
+
     }
+
 }
