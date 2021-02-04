@@ -18,21 +18,12 @@ function App() {
                     <Categories></Categories>
                 </Route>
 
-                    <Route exact path="/BeautySallons"  >
-                        <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/1"}></Bussinesses>
-                </Route>
+                    <Route exact path="/categories/:id" component={Bussinesses} >
+                        
+                    </Route>
 
-                <Route exact path="/Gyms"  >
-                    <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/2"}></Bussinesses>
-                </Route>
 
-                <Route exact path="/BarberShops"  >
-                    <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/3"}></Bussinesses>
-                </Route>    
 
-                <Route exact path="/bussiness/{id}"  >
-                    <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/3"}></Bussinesses>
-                </Route>
             </Switch>
         </div>
     </Router>

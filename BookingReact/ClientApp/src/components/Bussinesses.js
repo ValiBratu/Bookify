@@ -6,11 +6,11 @@ const Bussinesses = (props) =>  {
     
     const [bussinessesList, setbussinessesList] = useState([]);
    
-    var BussinessUrl = "/bussiness/";
+    var BussinessByCategoriesApiUrl = "https://localhost:44345/api/BussinessByCategories/";
 
     useEffect(() => {
-        
-        fetch(props.site)
+        console.log(props.match.params.id);
+        fetch(BussinessByCategoriesApiUrl + props.match.params.id)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -30,7 +30,7 @@ const Bussinesses = (props) =>  {
                     <div className="card-body">
                         <h5 className="card-title">{data.name}</h5>
                         <p className="card-text">{data.description}</p>
-                        <a href={BussinessUrl+data.id} className="btn btn-primary">Show Details.</a>
+                        
                     </div>
                 </div>
             ))}
