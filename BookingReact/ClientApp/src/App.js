@@ -6,6 +6,7 @@ import Categories from './components/Categories';
 import PropTypes from 'prop-types';
 import Bussinesses from './components/Bussiness';
 import NavMenu from './components/NavMenu';
+import { Link } from 'react-router-dom';
 
 function App() {
 

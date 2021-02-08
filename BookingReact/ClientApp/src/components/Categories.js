@@ -71,8 +71,8 @@ function Categories() {
                         <h3>Do you want to make in appoinment?</h3>
                     </div>
                     <div className="d-flex justify-content-center align-items-center-content">
-                    <button className="btn btn-outline-primary btn-lg" type="button">Login</button>
-                        <button className="btn btn-outline-primary btn-lg" type="button">Register</button>
+                    <button className="btn btn-outline-primary btn-lg" type="button">Log in</button>
+                        <button className="btn btn-outline-primary btn-lg" type="button">Sing up</button>
                     </div>
                 </div>
             </section>
