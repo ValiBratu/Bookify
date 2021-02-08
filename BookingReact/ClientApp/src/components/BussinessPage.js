@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 const BussinessPage = (props) => {
 
     const [bussinessDetails, setbussinessDetails] = useState([]);
-    const bussinessPageApi = "https://localhost:44345/api/Bussinesses/" + props.id;
+    const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
     useEffect(() => {
-
-        fetch(bussinessPageApi)
+        console.log(props.match.params.id);
+        fetch(bussinessPageApi + props.match.params.id)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -22,17 +22,20 @@ const BussinessPage = (props) => {
     }, [bussinessPageApi]);
     return (
         <div className="container">
+            <h1>{bussinessDetails.name}'s Page</h1>
+            <br></br>
+            <h2>Details:</h2>
+            <div className="card">
+                
+                <div className="card-body">
 
-            {bussinessDetails.map((data, i) => (
-                <div className="card" key={i}>
-
-                    <div className="card-body">
-                        <h5 className="card-title">{data.name}</h5>
-                        <p className="card-text">{data.description}</p>
-                        <p>{data.location } </p>
+                    <p className="card-text">{bussinessDetails.description}</p>
+                    <p >{bussinessDetails.location} </p>
+                    <br></br>
+                    <p>{bussinessDetails.email} </p>
                     </div>
                 </div>
-            ))}
+           
         </div>
 
     );

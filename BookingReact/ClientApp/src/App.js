@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Categories from './components/Categories';
 import PropTypes from 'prop-types';
 import Bussinesses from './components/Bussinesses';
+import BussinessPage from './components/BussinessPage';
 
 function App() {
 
@@ -18,9 +19,9 @@ function App() {
                     <Categories></Categories>
                 </Route>
 
-                    <Route exact path="/categories/:id" component={Bussinesses} >
-                        
-                    </Route>
+                    <Route exact path="/categories/:id" component={Bussinesses} ></Route>
+
+                    <Route exact path="/bussiness/:id" component={BussinessPage} ></Route>
 
 
 

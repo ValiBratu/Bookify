@@ -1,6 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 
 const Bussinesses = (props) =>  {
     
@@ -30,7 +30,7 @@ const Bussinesses = (props) =>  {
                     <div className="card-body">
                         <h5 className="card-title">{data.name}</h5>
                         <p className="card-text">{data.description}</p>
-                        
+                        <Link className="btn" to={"/bussiness/" + data.id}>Show Details</Link>
                     </div>
                 </div>
             ))}
