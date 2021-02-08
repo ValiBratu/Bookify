@@ -7,12 +7,15 @@ import Categories from './components/Categories';
 import PropTypes from 'prop-types';
 import Bussinesses from './components/Bussinesses';
 import BussinessPage from './components/BussinessPage';
+import Footer from './components/Footer';
+import ButtonAppBar from './components/Navbar';
 
 function App() {
 
 
     return (
-    <Router>
+        <Router>
+            <ButtonAppBar></ButtonAppBar>
         <div>
             <Switch>
                 <Route exact path="/" >
@@ -26,8 +29,10 @@ function App() {
 
 
             </Switch>
-        </div>
-    </Router>
+            </div>
+            <Footer></Footer>
+        </Router>
+       
     );
 
 }
