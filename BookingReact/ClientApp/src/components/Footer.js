@@ -24,7 +24,7 @@ function Footer() {
                 <div className="row">
                     
                     <div className="col-lg-6 col-md-12 mb-4 mb-md-0">
-                        <h5 className="text-uppercase">Footer Content</h5>
+                        <h5 className="text-uppercase">About Us</h5>
 
             <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
@@ -34,7 +34,7 @@ function Footer() {
         </div>
 
                     <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 className="text-uppercase">Links</h5>
+                        <h5 className="text-uppercase">Social Media</h5>
 
                         <ul className="list-unstyled mb-0">
                             <li>
@@ -53,7 +53,7 @@ function Footer() {
                     </div>
 
                     <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 className="text-uppercase mb-0">Links</h5>
+                        <h5 className="text-uppercase mb-0">Contact</h5>
 
                         <ul className="list-unstyled">
                             <li>

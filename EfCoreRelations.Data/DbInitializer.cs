@@ -49,9 +49,9 @@ namespace EfCoreRelations.Data
             }
             var categories = new Category[]
             {
-                new Category{Name="Frizerii"},
-                new Category{Name="Fitness"},
-                new Category{Name="Salon de Infrumusetare"}
+                new Category{Name="Frizerii",Photo="https://i.imgur.com/rL1tBsc.png"},
+                new Category{Name="Fitness",Photo="https://i.imgur.com/8bnljJ8.jpg"},
+                new Category{Name="Salon de Infrumusetare",Photo="https://i.imgur.com/UAyXMUj.jpeg"}
             };
             context.Categories.AddRange(categories);
             context.SaveChanges();

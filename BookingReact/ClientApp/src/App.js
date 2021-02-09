@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 import Bussinesses from './components/Bussinesses';
 import BussinessPage from './components/BussinessPage';
 import Footer from './components/Footer';
-import NavBar from './components/Navbar';
+import NavMenu from './components/NavMenu';
 
 function App() {
 
 
     return (
         <Router>
-            <NavBar></NavBar>
+            <NavMenu></NavMenu>
         <div>
             <Switch>
                 <Route exact path="/" >

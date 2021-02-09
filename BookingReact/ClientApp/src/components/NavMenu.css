@@ -1,0 +1,292 @@
+﻿.navbar-brand {
+    display:inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.navbar {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+
+.navbar {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body {
+    margin: 0;
+    font-family: Lato, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+.navbar {
+    position: relative;
+    padding: .5rem 1rem;
+}
+
+nav {
+    display: block;
+}
+
+
+.booking-navbar {
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+}
+
+.gradient {
+    background:linear-gradient(120deg,#7f70f5,#0ea0ff);
+    color: #fff;
+}
+
+@media (min-width:992px){
+    .navbar-expand-lg{
+        -ms-flex-flow:row nowrap;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+    }
+}
+
+.fixed-top {
+    top: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.bg-white {
+    background-color: #fff!important;
+}
+
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.booking-navbar .navbar-nav .navbar-link {
+    font-weight: 700;
+}
+
+.nav-link {
+    color: #fff;
+}
+
+.navbar-dark .navbar-nav .nav-link .nav-link:hover {
+    color: hsla(0.0%, 100%,.75);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    padding-right: .5rem;
+    padding-left: .5rem;
+}
+
+
+
+.gradient a:hover {
+    opacity: .75!important;
+}
+
+.navbar-nav .navbar-link {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.nav-link:focus .nav-link:hover {
+    text-decoration: none;
+}
+
+.a:hover {
+    color: #0075c1;
+    text-decoration: underline;
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+a {
+    color: #0ea0ff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+@media (min-width:992px){
+    .navbar-expand-lg .navbar-nav {
+        -ms-flex-direction:row;
+        flex-direction:row;
+    }
+}
+
+.ml-auto {
+    margin-left: auto!important;
+}
+
+.navbar-nav {
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    padding-bottom: 0;
+    list-style: none;
+}
+
+ul {
+    margin-top: 0;
+}
+
+ul {
+    margin-bottom: 1rem;
+}
+
+
+@media (min-width:992px) {
+    .navbar-expand-lg > .container {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-expand-lg > .container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.navbar .container {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1440px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.navbar-dark .navbar-toggler {
+    color: #fff;
+    border-color: hsla(0,0%, 100%, .1);
+}
+
+@media (min-width:992px) {
+    .navbar-expand-lg .navbar-toggler {
+        display: none;
+    }
+}
+
+.navbar-toggler:focus, .navbar-toggler:hover {
+    text-decoration: none;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+}
+
+.navbar-toggler {
+    padding: .25rem .75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 2em;
+}
+
+button {
+    text-transform: none;
+}
+
+button {
+    overflow: visible;
+}
+
+buton {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button {
+    border-radius: 0;
+}
+
+
+
+
+
+
+
+
+
