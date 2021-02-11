@@ -14,8 +14,14 @@ const RegisterPage = (props) => {
         ConfirmPass: ""
     });
 
+    const allInputsAreComplete = (event) => {
+
+    };
+
 
    const getInputValues = (event) => {
+
+
 
        if (userInfo.Password != userInfo.ConfirmPass) {
            alert("no");
