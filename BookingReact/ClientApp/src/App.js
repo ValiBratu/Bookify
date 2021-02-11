@@ -9,6 +9,7 @@ import Bussinesses from './components/Bussinesses';
 import BussinessPage from './components/BussinessPage';
 import Footer from './components/Footer';
 import NavMenu from './components/NavMenu';
+import RegisterPage from './components/RegisterPage';
 
 function App() {
 
@@ -18,19 +19,21 @@ function App() {
             <NavMenu></NavMenu>
         <div>
             <Switch>
-                <Route exact path="/" >
-                    <Categories></Categories>
+                    <Route exact path="/" >
+                        <Categories><br></br></Categories>
                 </Route>
 
                     <Route exact path="/categories/:id" component={Bussinesses} ></Route>
 
                     <Route exact path="/bussiness/:id" component={BussinessPage} ></Route>
 
-
+                    <Route exact path="/Register" component={RegisterPage }></Route>
+                        
 
             </Switch>
             </div>
             <Footer></Footer>
+            
         </Router>
        
     );

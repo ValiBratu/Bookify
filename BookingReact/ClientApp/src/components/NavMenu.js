@@ -14,6 +14,7 @@ function NavMenu() {
     };
 
     return (
+
         <nav className="navbar navbar-dark navbar-expand-lg fixed-top bg-white booking-navbar gradient">
             <div className="container">
 
@@ -25,7 +26,7 @@ function NavMenu() {
                             <a className="nav-link">Log in</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link">Sing up</a>
+                            <Link to="/Register" className="nav-link">Sign up</Link>
                         </li>
                     </ul>
                 </div>

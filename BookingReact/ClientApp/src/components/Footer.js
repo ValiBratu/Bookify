@@ -5,7 +5,7 @@ function Footer() {
 
     const styleForFooter = {
        
-        background: "grey",
+        background: "#0ea0ff",
         position: "absolute",
         left: "0px",
         bottom: "0px",
