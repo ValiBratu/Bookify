@@ -29,11 +29,11 @@ function Categories() {
                 <center><h3> Our services </h3></center>
 
                 {categoryList.map((data, i) => (
-                    <div className="row no-gutters" key={i }>
+                    <div className="row no-gutters" key={ i }>
                         <div className="col-md-4 item zoom-on-hover">
-                            <Link to={"/categories/"+data.id}>
-                                <img className="img-fluid image" src={data.photo} />
-                                <h4 className="top-left">{data.name}</h4>
+                            <Link to={"/categories/"+data.id }>
+                                <img className="img-fluid image" src={ data.photo } />
+                                <h4 className="top-left">{ data.name }</h4>
                             </Link>
                         </div>
                         

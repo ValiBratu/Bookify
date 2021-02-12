@@ -57,23 +57,23 @@ const RegisterPage = (props) => {
         <div className="registerContainer col-md-offset-4">
             <h1 className="h1Style">Sign Up</h1>
 
-            <div className="col-sm-12" style={{ paddingTop: "10px" }}>
-                <input type="text" className="form-control" id="FirstName" placeholder="First Name" name="FirstName" style={{ borderRadius: "15px" }} onChange={handleInput}></input>
+            <div className="col-sm-12 pt-3" >
+                <input type="text" className="form-control rounded-pill" id="FirstName" placeholder="First Name" name="FirstName"  onChange={handleInput}></input>
             </div>
-            <div className="col-sm-12" style={{ paddingTop: "10px" }}>
-                <input type="text" className="form-control" id="LastName" placeholder="Last Name" name="LastName" style={{ borderRadius: "15px" }} onChange={handleInput}></input>
+            <div className="col-sm-12 pt-3">
+                <input type="text" className="form-control rounded-pill" id="LastName" placeholder="Last Name" name="LastName"  onChange={handleInput}></input>
              </div>
-            <div className="col-sm-12" style={{ paddingTop: "10px" }}>
-                <input type="email" className="form-control" id="Email" placeholder="Enter email" name="Email" style={{ borderRadius: "15px" }} onChange={handleInput}></input>
+            <div className="col-sm-12 pt-3">
+                <input type="email" className="form-control rounded-pill" id="Email" placeholder="Enter email" name="Email"  onChange={handleInput}></input>
             </div>
-            <div className="col-sm-12" style={{ paddingTop: "10px" }}>
-                <input type="text" className="form-control" id="Phone" placeholder="Enter Mobile No." name="Phone" style={{ borderRadius: "15px" }} onChange={handleInput}></input>
+            <div className="col-sm-12 pt-3">
+                <input type="text" className="form-control rounded-pill" id="Phone" placeholder="Enter Mobile No." name="Phone"  onChange={handleInput}></input>
                 </div>
-            <div className="col-sm-12" style={{ paddingTop: "10px" }}>
-                <input type="password" className="form-control" id="Password" placeholder="Type your Password" name="Password" style={{ borderRadius: "15px" }} onChange={handleInput}></input>
+            <div className="col-sm-12 pt-3">
+                <input type="password" className="form-control rounded-pill" id="Password" placeholder="Type your Password" name="Password"  onChange={handleInput}></input>
             </div>
-            <div className="col-sm-12" style={{ paddingTop: "10px" }}>
-                <input type="password" className="form-control" id="ConfirmPass" placeholder="Confirm Password" name="ConfirmPass" style={{ borderRadius: "15px" }} onChange={handleInput}></input>
+            <div className="col-sm-12 pt-3">
+                <input type="password" className="form-control rounded-pill" id="ConfirmPass" placeholder="Confirm Password" name="ConfirmPass"  onChange={handleInput}></input>
             </div>
 
             <br></br>
