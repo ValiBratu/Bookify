@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj": {}
+    "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\BookingAPI\\BookingAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj": {
+    "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\BookingAPI\\BookingAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\BookingAPI\\BookingAPI.csproj",
         "projectName": "BookingAPI",
-        "projectPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\BookingAPI.csproj",
-        "packagesPath": "C:\\Users\\valib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\BookingAPI\\obj\\",
+        "projectPath": "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\BookingAPI\\BookingAPI.csproj",
+        "packagesPath": "C:\\Users\\Bogdan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\BookingAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\valib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bogdan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,9 +26,10 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
-                "projectPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj"
+              "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
+                "projectPath": "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj"
               }
             }
           }
@@ -41,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -87,21 +89,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
+    "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
         "projectName": "EfCoreRelations.Data",
-        "projectPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
-        "packagesPath": "C:\\Users\\valib\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\obj\\",
+        "projectPath": "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
+        "packagesPath": "C:\\Users\\Bogdan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bogdan\\source\\repos\\SimpleBooking\\EfCoreRelations.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\valib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bogdan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -113,6 +115,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -124,6 +127,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -159,7 +163,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -5799,19 +5799,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\valib\\.nuget\\packages\\": {}
+    "C:\\Users\\Bogdan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
+      "projectUniqueName": "C:\\Users\\Bogdan\\Source\\Repos\\SimpleBooking\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
       "projectName": "EfCoreRelations.Data",
-      "projectPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
-      "packagesPath": "C:\\Users\\valib\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\valib\\Desktop\\Advanced C#\\BookingAPI\\EfCoreRelations.Data\\obj\\",
+      "projectPath": "C:\\Users\\Bogdan\\Source\\Repos\\SimpleBooking\\EfCoreRelations.Data\\EfCoreRelations.Data.csproj",
+      "packagesPath": "C:\\Users\\Bogdan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bogdan\\Source\\Repos\\SimpleBooking\\EfCoreRelations.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\valib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bogdan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5823,6 +5823,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5834,6 +5835,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -5869,7 +5871,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

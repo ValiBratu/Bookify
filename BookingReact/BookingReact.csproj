@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\RegisterPageCSS.css" />
     <None Remove="ClientApp\src\JavaScript.js" />
     <None Remove="ClientApp\src\reportWebVitals.js" />
   </ItemGroup>
