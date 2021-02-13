@@ -10,6 +10,7 @@ import BussinessPage from './components/BussinessPage';
 import Footer from './components/Footer';
 import NavMenu from './components/NavMenu';
 import RegisterPage from './components/RegisterPage';
+import Login from './components/Login';
 
 function App() {
 
@@ -27,15 +28,22 @@ function App() {
 
                     <Route exact path="/bussiness/:id" component={BussinessPage} ></Route>
 
-                    <Route exact path="/Register" component={RegisterPage }></Route>
-                        
+                    <Route exact path="/Register" component={RegisterPage}></Route>
 
+                    <Route exact path="/Login" component={Login}></Route>
+
+
+                    <Route exact path="/bussiness/{id}"  >
+                        <NavMenu></NavMenu>
+                        <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/3%22%7D%3E</Bussinesses>"} />
+                    </Route>
             </Switch>
             </div>
             <Footer></Footer>
-            
+
+
         </Router>
-       
+
     );
 
 }
