@@ -1,14 +1,29 @@
 ﻿import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Select from 'react-select';
+
 
 function Bussinesses(props) {
     const bussinessApi = "https://localhost:44345/api/BussinessByCategories/";
+    const CitiesApi = "https://localhost:44345/api/Cities";
+
     const [bussinessList, setBussinessList] = useState([]);
+
+    const [CitiesList, setCitiesList] = useState({
+        selectOptions: [],
+        id: "",
+        name: ''
+    });
+
+    const [keepAllBussinesses, setKeepAllBussinesses] = useState([]);
+
+    
 
     var BussinessUrl = "/bussiness/";
 
     useEffect(() => {
+        // fetch: GET all bussinesses with categoryId == props.match.params.id
         fetch(bussinessApi + props.match.params.id)
             .then(response => response.json())
             .then(data => {
@@ -16,18 +31,60 @@ function Bussinesses(props) {
 
                 console.log(bussinessList);
                 setBussinessList(data);
+                setKeepAllBussinesses(data);
             })
             .catch(err => console.log(err))
 
+        // fetch: GET all Cities 
+        fetch(CitiesApi)
+            .then(response => response.json())
+            .then(data => {
+
+                const options = data.map(d => ({
+                    "value": d.id,
+                    "label": d.name
+                }))
+                setCitiesList({ selectOptions: options });
+            })
+            .catch(err => console.log(err));
     }, []);
+
+
+
+    const getBussinessByCity = (cityid,listOfBussinesses) => {
+
+        const arrayOfBussinesses = [];
+        
+        listOfBussinesses.map((bussiness, i) => {
+            
+
+            if (bussiness.cityId == cityid) {
+                arrayOfBussinesses.push(bussiness);
+            }
+
+        })
+        console.log(arrayOfBussinesses);
+        setBussinessList(arrayOfBussinesses);
+    }
+
+
+    const updateCity = (event) => {
+        
+        getBussinessByCity(event.value, keepAllBussinesses);
+    }
+    
+
     return (
 
         <section className="booking-block block-intro">
             <br></br>
             <br></br>
             <br></br>
+            <Select options={CitiesList.selectOptions} onChange={updateCity} />
+            <br></br>
+            <br></br>
             <div className="container">
-
+                
                 {bussinessList.map((data, i) => (
                     <div className="card" key={i}>
 

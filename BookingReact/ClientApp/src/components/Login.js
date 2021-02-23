@@ -36,7 +36,7 @@ function Login() {
                         <div className="row">
                             <div className="col-lg-4 col-md-6 ml-auto mr-auto">
                                 <div className="card card-login">
-                                    <form className="form" method action>
+                                    <form className="form" method="POST" action="#">
                                         <div className="card-header card-header-primary text-center">
                                             <h4 className="card-title">Login</h4>
                                             <div className="social-line">
@@ -53,14 +53,7 @@ function Login() {
                                         </div>
                                         <p className="description text-center">Or Be Classical</p>
                                         <div className="card-body">
-                                            <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <span className="input-group-text">
-                                                        <i className="material-icons">face</i>
-                                                    </span>
-                                                </div>
-                                                <input type="text" className="form-control" placeholder="First Name..." />
-                                            </div>
+
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text">
@@ -79,7 +72,7 @@ function Login() {
                                             </div>
                                         </div>
                                         <div className="footer text-center">
-                                            <a href="#pablo" className="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>
+                                            <a href="#pablo" className="btn btn-primary btn-link btn-wd btn-lg">Login</a>
                                         </div>
                                     </form>
                                 </div>

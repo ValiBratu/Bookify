@@ -82,7 +82,7 @@ const RegisterPage = (props) => {
                         <div className="row">
                             <div className="col-lg-4 col-md-6 ml-auto mr-auto">
                                 <div className="card card-login">
-                                    <form className="form" method action>
+                                    <form className="form" method="POST" action="#">
                                         <div className="card-header card-header-primary text-center">
                                             <h4 className="card-title">Register</h4>
                                             <div className="social-line">
