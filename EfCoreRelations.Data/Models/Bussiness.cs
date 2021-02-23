@@ -26,7 +26,7 @@ namespace EfCoreRelations.Data.Models
 
 
         public string Location { get; set; }
-        public string NrTelefon { get; set; }
+        public string PhoneNumber { get; set; }
 
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
