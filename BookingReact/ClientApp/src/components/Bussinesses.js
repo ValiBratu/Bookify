@@ -11,9 +11,7 @@ function Bussinesses(props) {
     const [bussinessList, setBussinessList] = useState([]);
 
     const [CitiesList, setCitiesList] = useState({
-        selectOptions: [],
-        id: "",
-        name: ''
+        selectOptions: []
     });
 
     const [keepAllBussinesses, setKeepAllBussinesses] = useState([]);
@@ -39,22 +37,29 @@ function Bussinesses(props) {
         fetch(CitiesApi)
             .then(response => response.json())
             .then(data => {
-
+                const allCitiesConst = [{ "value": 0, "label": "All Cities" }];
                 const options = data.map(d => ({
                     "value": d.id,
                     "label": d.name
                 }))
-                setCitiesList({ selectOptions: options });
+
+                setCitiesList({ selectOptions: allCitiesConst.concat(options) });
+                
             })
             .catch(err => console.log(err));
     }, []);
 
 
 
-    const getBussinessByCity = (cityid,listOfBussinesses) => {
-
+    const getBussinessByCity = (cityid, listOfBussinesses) => {
+        console.log(cityid);
         const arrayOfBussinesses = [];
-        
+
+        if (cityid == 0) {
+            setBussinessList(listOfBussinesses);
+            return;
+        }
+
         listOfBussinesses.map((bussiness, i) => {
             
 
@@ -72,7 +77,8 @@ function Bussinesses(props) {
         
         getBussinessByCity(event.value, keepAllBussinesses);
     }
-    
+
+
 
     return (
 
@@ -80,7 +86,7 @@ function Bussinesses(props) {
             <br></br>
             <br></br>
             <br></br>
-            <Select options={CitiesList.selectOptions} onChange={updateCity} />
+            <Select id="selectCityBar" options={CitiesList.selectOptions} onChange={updateCity} />
             <br></br>
             <br></br>
             <div className="container">
