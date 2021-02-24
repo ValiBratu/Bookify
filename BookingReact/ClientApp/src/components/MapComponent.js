@@ -6,7 +6,7 @@ function MapComponent(props) {
 
     const mapStyle = {
         height: "600px",
-        width: "800px",
+        width: "1400px",
         margin: "0 auto",
         marginTop:"100px"
     }

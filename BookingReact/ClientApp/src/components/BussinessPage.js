@@ -39,6 +39,7 @@ const BussinessPage = (props) => {
             <br></br>
             <br></br>
             <br></br>
+
         <div className="main main-raised">
           <div className="profile-content">
             <div className="container">
@@ -138,7 +139,11 @@ const BussinessPage = (props) => {
             <div>
 
             </div>
-            
+
+
+            <div className="Container">
+                <MapComponent></MapComponent>
+            </div>
         </div>
 
 

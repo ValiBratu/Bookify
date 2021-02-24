@@ -32,7 +32,7 @@ function App() {
                     <Route exact path="/Register" component={RegisterPage}></Route>
 
                     <Route exact path="/Login" component={Login}></Route>
-                    <Route exact path="/TestMap" component={MapComponent}></Route>
+                   
 
                     <Route exact path="/bussiness/{id}"  >
                         <NavMenu></NavMenu>
