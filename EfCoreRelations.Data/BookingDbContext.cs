@@ -29,6 +29,7 @@ namespace EfCoreRelations.Data
 
         public DbSet<EmployeeService> EmployeeServices { get; set; }
 
+        public DbSet<SiteReview> SiteReviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

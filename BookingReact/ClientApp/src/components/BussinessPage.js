@@ -1,13 +1,18 @@
 ﻿import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
+import { ReactBingmaps } from 'react-bingmaps';
+import MapComponent from './MapComponent';
 
 const BussinessPage = (props) => {
+
+    const APIkey = "AgOE4RYwhEH-5pwizHGRxlfspQf1A0adxJcISTDPBOU3gin7UzD6mevQrPKabJAQ";
 
     const [bussinessDetails, setbussinessDetails] = useState([]);
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
     useEffect(() => {
+
+
         console.log(props.match.params.id);
         fetch(bussinessPageApi + props.match.params.id)
             .then(response => response.json())
@@ -20,6 +25,11 @@ const BussinessPage = (props) => {
             .catch(err => console.log(err))
 
     }, [bussinessPageApi]);
+
+
+
+
+
     return (
         <div>
             <br></br>
@@ -125,6 +135,10 @@ const BussinessPage = (props) => {
             </div>
                 </div>
             </div>
+            <div>
+
+            </div>
+            
         </div>
 
 

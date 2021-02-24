@@ -311,6 +311,27 @@ namespace EfCoreRelations.Data.Migrations
                     b.ToTable("Services");
                 });
 
+            modelBuilder.Entity("EfCoreRelations.Data.Models.SiteReview", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SiteReviews");
+                });
+
             modelBuilder.Entity("BookingAPI.Models.User", b =>
                 {
                     b.HasOne("BookingAPI.Models.UserType", "UserType")

@@ -229,7 +229,33 @@ namespace EfCoreRelations.Data
             context.SaveChanges();
 
 
-
+            if (context.SiteReviews.Any())
+            {
+                return;
+            }
+            var siteReviews = new SiteReview[]
+            {
+                new SiteReview
+                {
+                    Name = "Cecile Tournie",
+                    Email= "ctournie0@msn.com",
+                    Description=  "Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui."
+                },
+                new SiteReview
+                {
+                    Name = "Nelly Santorini",
+                    Email= "nsantorini1@umn.edu",
+                    Description= "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo."
+                },
+                 new SiteReview
+                {
+                    Name =  "Charlene Iwanicki",
+                    Email= "ciwanicki2@moonfruit.com",
+                    Description=  "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio."
+                }
+            };
+            context.SiteReviews.AddRange(siteReviews);
+            context.SaveChanges();
         }
     }
     

@@ -12,7 +12,7 @@ function WriteMessageComponent() {
         <div className="section section-contacts">
             <div className="row">
                 <div className="col-md-8 ml-auto mr-auto">
-                    <h2 className="text-center title">Write us a message</h2>
+                    <h2 className="text-center title">Give us Feedback!</h2>
                     <h4 className="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
                     <form className="contact-form">
                         <div className="row">
