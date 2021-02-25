@@ -24,6 +24,9 @@ namespace EfCoreRelations.Data.Models
         public int CityId { get; set; }
         public City City { get; set; }
 
+        public decimal Latitude { get; set; }
+
+        public decimal Longitude { get; set; }
 
         public string Location { get; set; }
         public string PhoneNumber { get; set; }

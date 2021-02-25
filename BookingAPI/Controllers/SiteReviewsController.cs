@@ -78,7 +78,7 @@ namespace BookingAPI.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<SiteReview>> PostSiteReview(SiteReview siteReview)
+        public async Task<ActionResult<SiteReview>> PostSiteReview([FromBody] SiteReview siteReview)
         {
             _context.SiteReviews.Add(siteReview);
             await _context.SaveChangesAsync();

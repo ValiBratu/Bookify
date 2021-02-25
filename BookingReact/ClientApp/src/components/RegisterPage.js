@@ -8,32 +8,54 @@ const RegisterPage = (props) => {
     const [userInfo, setUserInfo] = useState({
         FirstName: "",
         LastName: "",
+        typeId:4,
         Email: "",
-        Phone: "",
+        PhoneNumber: "",
         Password: "",
         ConfirmPass: ""
     });
 
-    const allInputsAreComplete = (event) => {
+    const sentDataAPI = "https://localhost:44345/api/Users";
 
-    };
+    const pStyle = {
+        margin: "0 auto",
+        color: "red",
+        paddingLeft:"60px"
+    }
 
+    
 
    const getInputValues = (event) => {
-
-
-
-       if (userInfo.Password != userInfo.ConfirmPass) {
-           alert("no");
+       const warning = document.getElementById("warning");
+       if (userInfo.FirstName == "" || userInfo.LastName == "" || userInfo.Email == "" || userInfo.Phone == "" || userInfo.Password == "" || userInfo.ConfirmPass == "") {
+          
+           warning.textContent = "All fields must be completed!";
            return;
        }
 
-       console.log("Firstname "+userInfo.FirstName);
-       console.log("Lastname " +userInfo.LastName);
-       console.log("Email " +userInfo.Email);
-       console.log("Phone " +userInfo.Phone);
-       console.log("Pass " +userInfo.Password);
-       console.log("ConfirmPass " + userInfo.ConfirmPass);
+
+       if (userInfo.Password != userInfo.ConfirmPass) {
+           
+           warning.textContent = "Password and Confirm Password inputs are different!";
+           return;
+       }
+       warning.textContent = "";
+
+       fetch(sentDataAPI, {
+           method: 'POST',
+           headers: {
+               'Content-type': 'application/json'
+           },
+           body: JSON.stringify(
+               userInfo)
+       })
+           .then(response => {
+               console.log(response)
+           })
+           .catch(error => {
+               console.log(error)
+           })
+
 
     };
 
@@ -45,12 +67,6 @@ const RegisterPage = (props) => {
         console.log(userInfo.FirstName);
 
     };
-
-    //const addUserToDb = () => {
-
-
-
-    //};
 
 
     return (
@@ -129,7 +145,7 @@ const RegisterPage = (props) => {
                                                         <i className="material-icons">phone</i>
                                                     </span>
                                                 </div>
-                                            <input type="tel" className="form-control" placeholder="Phone number..." name="Phone" id="Phone" onChange={handleInput} />
+                                            <input type="tel" className="form-control" placeholder="Phone number..." name="PhoneNumber" id="PhoneNumber" onChange={handleInput} />
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -147,7 +163,10 @@ const RegisterPage = (props) => {
                                                     </span>
                                                 </div>
                                             <input type="password" className="form-control" placeholder="Confirm Password..." name="ConfirmPass" id="ConfirmPass" onChange={handleInput} />
-                                            </div>
+
+                                        </div>
+
+                                        <p id="warning" style={pStyle}></p>
                                         </div>
                                     <div className="footer text-center">
                                         <button type="button" href="" className="btn btn-primary btn-link btn-wd btn-lg" onClick={getInputValues}>Register</button>

@@ -37,7 +37,7 @@ function NavMenu() {
                 <div className="navbar-translate">
                             <Link to="/">
                             <div className="navbar-brand">
-                                    Simple Booking</div></Link>
+                                    <strong>Simple Booking</strong></div></Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="sr-only">Toggle navigation</span>
                         <span className="navbar-toggler-icon"></span>

@@ -41,9 +41,9 @@ function ReviewsComponent() {
                                         <p className="card-description">{ review.description}</p>
                                 </div>
                                 <div className="card-footer justify-content-center">
-                                    <a href="#pablo" className="btn btn-link btn-just-icon"><i className="fa fa-twitter" /></a>
-                                    <a href="#pablo" className="btn btn-link btn-just-icon"><i className="fa fa-instagram" /></a>
-                                    <a href="#pablo" className="btn btn-link btn-just-icon"><i className="fa fa-facebook-square" /></a>
+                                    <a href="" className="btn btn-link btn-just-icon"><i className="fa fa-twitter" /></a>
+                                    <a href="" className="btn btn-link btn-just-icon"><i className="fa fa-instagram" /></a>
+                                    <a href="" className="btn btn-link btn-just-icon"><i className="fa fa-facebook-square" /></a>
                                 </div>
                             </div>
                         </div>

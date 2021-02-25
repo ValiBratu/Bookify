@@ -130,7 +130,9 @@ namespace EfCoreRelations.Data
                     CategoryId= 1,
                     Description= "Velit nulla proident aliqua laborum do est fugiat laborum et aute. Nulla occaecat do nostrud ullamco irure ea exercitation ullamco sit proident. Magna laborum irure aliqua aliquip aute amet. Dolor et adipisicing ea magna laborum voluptate deserunt. Culpa quis sunt minim occaecat deserunt aute do.",
                     Rating= 4,
-                    Photo=""
+                    Photo="",
+                    Latitude=44.435851M,
+                    Longitude=26.105388M
                 },
                 new Bussiness
                 {
@@ -143,7 +145,9 @@ namespace EfCoreRelations.Data
                     CategoryId= 1,
                     Description=  "Esse amet cupidatat Lorem ex cupidatat exercitation est non incididunt pariatur. Culpa aute nostrud anim nisi. Proident deserunt quis et ipsum nulla Lorem laboris minim duis. Est do fugiat id nisi qui aliquip excepteur nostrud ipsum aliquip. Magna reprehenderit esse velit reprehenderit irure culpa dolore aliqua ex do ut laborum tempor. Et non eiusmod fugiat cupidatat magna dolore cillum sunt id aliquip eu deserunt. Nulla commodo Lorem officia nostrud Lorem anim do dolore ipsum commodo mollit commodo",
                     Rating = 3,
-                    Photo=""
+                    Photo="",
+                    Latitude=45.652541M,
+                    Longitude=25.621590M
                 },
                 new Bussiness
                 {
@@ -156,8 +160,53 @@ namespace EfCoreRelations.Data
                     CategoryId= 1,
                     Description=  "Lorem sunt adipisicing pariatur quis magna ea in qui occaecat id laborum sit ex. Ea exercitation reprehenderit cillum dolore eu officia mollit. Nostrud ullamco non eu dolore ea proident qui aliquip Lorem occaecat. Minim nulla irure dolor fugiat cupidatat voluptate velit consectetur sint. Eu nulla ut non duis enim cillum non aliquip cupidatat. Anim eiusmod qui cupidatat minim.",
                     Rating = 5,
-                    Photo=""
+                    Photo="",
+                    Latitude=45.648854M,
+                    Longitude=25.601645M
+                },//
+                new Bussiness
+                {
+                    Name= "Gigazoom",
+                    Email= "vlangrick1@ft.com",
+                    CityId= 1,
+                    Location= "70015 Melody Plaza",
+                    PhoneNumber= "846-847-0953",
+                    Description= "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia.",
+                    Rating= 2,
+                    CategoryId= 3,
+                    UserId= 5,
+                    Latitude=47.164217M,
+                    Longitude=27.585301M
+
                 },
+                new Bussiness
+                {
+                    Name= "Riffpath",
+                    Email= "malbinson2@msu.edu",
+                    CityId= 3,
+                    Location= "907 Golden Leaf Drive",
+                    PhoneNumber= "631-480-4042",
+                    Description= "Donec semper sapien a libero. Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+                    Rating= 3,
+                    CategoryId= 3,
+                    UserId= 6,
+                    Latitude=44.419075M,
+                    Longitude=26.127191M
+                },
+                new Bussiness
+                {
+                      Name=  "Feednation",
+                      Email= "afothergill3@github.io",
+                      CityId= 3,
+                      Location= "50589 Pawling Parkway",
+                      PhoneNumber= "228-919-8765",
+                      Description= "Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.",
+                      Rating= 4,
+                      CategoryId= 3,
+                      UserId= 6,
+                      Latitude=44.403716M,
+                      Longitude=26.095925M
+                }
 
             };
             context.Bussinesses.AddRange(bussinesses);
