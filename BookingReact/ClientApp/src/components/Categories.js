@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import HeaderMainPage from './MainPageHeader';
 import ReviewsComponent from './ReviewsComponent';
 import WriteMessageComponent from './WriteMessageComponent';
-import MapComponent from './MapComponent';
 
 
 
