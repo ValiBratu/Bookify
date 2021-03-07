@@ -24,7 +24,7 @@ namespace BookingAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<IEnumerable<Bussiness>>> BussinessesByCategoryId(int id)
         {
-            var bussinesses = _context.Bussinesses.ToList();
+            var bussinesses = await _context.Bussinesses.ToListAsync();
 
             var bussinessesWithCategoryIdValid = from bussiness in bussinesses
                                                  where bussiness.CategoryId.Equals(id)

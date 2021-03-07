@@ -1,16 +1,16 @@
 ﻿import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { ReactBingmaps } from 'react-bingmaps';
 import MapComponent from './MapComponent';
+import ReactDOM from 'react-dom';
+import ServicesCompponent from './ServicesComponent';
 
 const BussinessPage = (props) => {
 
-    const APIkey = "AgOE4RYwhEH-5pwizHGRxlfspQf1A0adxJcISTDPBOU3gin7UzD6mevQrPKabJAQ";
-
+   
     const [bussinessDetails, setbussinessDetails] = useState([]);
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
-    
+   
+
     useEffect(() => {
 
 
@@ -21,14 +21,63 @@ const BussinessPage = (props) => {
                 console.log(data);
                 setbussinessDetails(data);
 
-
             })
             .catch(err => console.log(err))
-
+        
     }, [bussinessPageApi]);
 
 
+    const makeIconsSameClass = () => {
+        const LocationIcon = document.getElementById("locationIcon");
+        const PlaceIcon = document.getElementById("placeIcon");
+        const BookIcon = document.getElementById("BookIcon");
 
+        LocationIcon.setAttribute("class", "nav-link");
+        PlaceIcon.setAttribute("class", "nav-link");
+        BookIcon.setAttribute("class", "nav-link");
+
+    }
+
+    const renderMap = () => {
+
+        makeIconsSameClass();
+
+        let Map = (
+            <MapComponent
+                latitude={bussinessDetails.latitude}
+                longitude={bussinessDetails.longitude}
+                key={bussinessDetails.name}>
+
+            </MapComponent>
+        );
+       
+
+        const MapDiv = document.getElementById("showRequest");
+        const LocationIcon = document.getElementById("locationIcon");
+
+        LocationIcon.setAttribute("class", "nav-link active");
+
+        ReactDOM.render(Map, MapDiv);
+
+    }
+
+
+    const renderServices = () => {
+        makeIconsSameClass();
+
+        const BookDiv = document.getElementById("showRequest");
+        const BookIcon = document.getElementById("BookIcon");
+
+        BookIcon.setAttribute("class", "nav-link active");
+
+
+        const servicesDiv = (
+            <ServicesCompponent id={bussinessDetails.id}/>
+           
+            );
+        ReactDOM.render(servicesDiv, BookDiv);
+
+    }
 
 
     return (
@@ -77,29 +126,28 @@ const BussinessPage = (props) => {
                 <div className="col-md-6 ml-auto mr-auto">
                   <div className="profile-tabs">
                     <ul className="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                      <li className="nav-item">
-                        <a className="nav-link active"  role="tab" data-toggle="tab">
+                    <li className="nav-item">
+                        <a className="nav-link" id="locationIcon" onClick={renderMap} role="tab" data-toggle="tab">
                           <i className="material-icons">camera</i> Location
                         </a>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link"  role="tab" data-toggle="tab">
+                        <a className="nav-link" id="placeIcon"  role="tab" data-toggle="tab">
                           <i className="material-icons">palette</i> Working place
                         </a>
                       </li>
-                      <li className="nav-item">
-                        <a className="nav-link"  role="tab" data-toggle="tab">
+                        <li className="nav-item">
+                            <a className="nav-link" id="BookIcon" onClick={renderServices} role="tab" data-toggle="tab">
                           <i className="material-icons">favorite</i> Book now
                         </a>
                       </li>
                         </ul>
                   </div>
                     </div>
-                    <MapComponent
-                        latitude={bussinessDetails.latitude}
-                        longitude={bussinessDetails.longitude}
-                    ></MapComponent>
 
+                 <div id="showRequest">
+
+                    </div>
               </div>
 
             </div>

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React from 'react';
 import { ReactBingmaps } from 'react-bingmaps';
 
 
@@ -19,13 +19,14 @@ function MapComponent(props) {
     const latAndLong = [props.latitude, props.longitude];
     console.log(latAndLong);
     return (
-        <div className="Map" style={mapStyle}>
-            <ReactBingmaps 
+        <div style={mapStyle}>
+            <ReactBingmaps
+                
                 bingmapKey="AgOE4RYwhEH-5pwizHGRxlfspQf1A0adxJcISTDPBOU3gin7UzD6mevQrPKabJAQ"
                 pushPins={pushPins}
                 center={latAndLong}
-                zoom={15 }>
-            </ReactBingmaps>
+                zoom={15 }/>
+            
         </div>
     );
 

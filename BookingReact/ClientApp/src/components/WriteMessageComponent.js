@@ -1,7 +1,5 @@
-﻿import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import ReactDOM from "react-dom";
-import Header from './MainPageHeader';
+﻿import React, { useState} from 'react';
+
 
 function WriteMessageComponent() {
 

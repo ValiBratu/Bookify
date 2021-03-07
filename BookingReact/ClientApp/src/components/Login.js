@@ -1,6 +1,5 @@
 ﻿import React from 'react';
 import './material-kit.css'
-import { Link } from 'react-router-dom';
 
 function Login() {
     let [anchorEl, setAnchorEl] = React.useState(null);
