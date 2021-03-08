@@ -9,8 +9,7 @@ const BussinessPage = (props) => {
     const [bussinessDetails, setbussinessDetails] = useState([]);
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
-   
-
+    
     useEffect(() => {
 
 
@@ -18,9 +17,9 @@ const BussinessPage = (props) => {
         fetch(bussinessPageApi + props.match.params.id)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+             
                 setbussinessDetails(data);
-
+                
             })
             .catch(err => console.log(err))
         
@@ -45,8 +44,7 @@ const BussinessPage = (props) => {
         let Map = (
             <MapComponent
                 latitude={bussinessDetails.latitude}
-                longitude={bussinessDetails.longitude}
-                key={bussinessDetails.name}>
+                longitude={bussinessDetails.longitude}>
 
             </MapComponent>
         );
@@ -58,7 +56,7 @@ const BussinessPage = (props) => {
         LocationIcon.setAttribute("class", "nav-link active");
 
         ReactDOM.render(Map, MapDiv);
-
+     
     }
 
 
@@ -145,11 +143,11 @@ const BussinessPage = (props) => {
                   </div>
                     </div>
 
-                 <div id="showRequest">
 
-                    </div>
               </div>
+                        <div id="showRequest">
 
+                        </div>
             </div>
                 </div>
             </div>

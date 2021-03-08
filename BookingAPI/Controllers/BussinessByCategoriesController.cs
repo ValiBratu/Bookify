@@ -21,11 +21,18 @@ namespace BookingAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Bussiness>>> BussinessesByCategoryId(int id)
-        {
-            var bussinesses = await _context.Bussinesses.ToListAsync();
 
+        [Route("api/category/{id}/city/{cityId}")]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<Bussiness>>> BussinessesByCategoryId(int id ,int? cityId)
+        {
+            if (cityId.HasValue)
+            {
+
+            }
+
+            var bussinesses = await _context.Bussinesses.ToListAsync();
+            
             var bussinessesWithCategoryIdValid = from bussiness in bussinesses
                                                  where bussiness.CategoryId.Equals(id)
                                                  select bussiness;

@@ -8,7 +8,8 @@ function MapComponent(props) {
         height: "600px",
         width: "1200px",
         margin: "0 auto",
-        marginTop:"100px"
+        marginTop: "50px",
+        marginLeft:"-40px"
     }
   
     const pushPins = [
@@ -17,7 +18,6 @@ function MapComponent(props) {
         }
     ];
     const latAndLong = [props.latitude, props.longitude];
-    console.log(latAndLong);
     return (
         <div style={mapStyle}>
             <ReactBingmaps

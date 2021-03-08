@@ -28,7 +28,7 @@ namespace BookingAPI.Controllers
         // GET: api/Categories
         [HttpGet]
         [Produces("application/json")]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult<IEnumerable<Category>>> GetCategories(int? cityId)
         {
            
             return await _context.Categories.ToListAsync();

@@ -29,7 +29,7 @@ function ServicesCompponent(props) {
                                 <h5 className="card-title">{service.serviceName}</h5>
                                 <p className="card-text">Duration: {service.serviceDuration} Minutes</p>
                                 <p className="card-text">Price: {service.price} RON</p>
-                                <a href="#" className="btn btn-primary">Book Now!</a>
+                                <button  className="btn btn-primary">Book Now!</button>
                             </div>
 
                         </div>
