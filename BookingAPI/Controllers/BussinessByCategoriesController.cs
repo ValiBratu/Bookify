@@ -22,14 +22,11 @@ namespace BookingAPI.Controllers
         }
 
 
-        [Route("api/category/{id}/city/{cityId}")]
+        
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Bussiness>>> BussinessesByCategoryId(int id ,int? cityId)
+        public async Task<ActionResult<IEnumerable<Bussiness>>> BussinessesByCategoryId(int id)
         {
-            if (cityId.HasValue)
-            {
 
-            }
 
             var bussinesses = await _context.Bussinesses.ToListAsync();
             

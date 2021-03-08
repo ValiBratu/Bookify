@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EfCoreRelations.Data.Models
@@ -11,10 +12,15 @@ namespace EfCoreRelations.Data.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public int BussinessId { get; set; }
         public int Duration { get; set; }
 
+
+        [Column(TypeName = "decimal")]
+        public Decimal ServicePrice { get; set; }
+
         public ICollection<EmployeeService> Employees { get; set; }
-        public IList<BussinessService> BussinessServices { get; set; }
+       
     }
 
     public class ServiceEntityConfiguration : IEntityTypeConfiguration<Service>

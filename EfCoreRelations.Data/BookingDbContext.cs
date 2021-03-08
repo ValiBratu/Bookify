@@ -18,7 +18,7 @@ namespace EfCoreRelations.Data
         public DbSet<City> Cities { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-        public DbSet<BussinessService> BussinessServices { get; set; }
+        
 
         public DbSet<Service> Services { get; set; }
         public DbSet<Appoinment> Appoinments { get; set; }

@@ -51,7 +51,7 @@ namespace EfCoreRelations.Data.Models
 
         public ICollection<Appoinment> Appoinments { get; set; }
 
-        public IList<BussinessService> BussinessServices { get; set; }
+        public IList<Service> Services { get; set; }
 
     }
 

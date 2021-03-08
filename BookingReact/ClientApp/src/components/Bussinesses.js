@@ -41,7 +41,7 @@ function Bussinesses(props) {
                     "value": d.id,
                     "label": d.name
                 }))
-
+                
                 setCitiesList({ selectOptions: allCitiesConst.concat(options) });
                 
             })

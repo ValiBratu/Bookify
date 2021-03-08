@@ -70,7 +70,7 @@ const BussinessPage = (props) => {
 
 
         const servicesDiv = (
-            <ServicesCompponent id={bussinessDetails.id}/>
+            <ServicesCompponent id={props.match.params.id}/>
            
             );
         ReactDOM.render(servicesDiv, BookDiv);
