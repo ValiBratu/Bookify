@@ -47,10 +47,10 @@ function ServicesCompponent(props) {
     }
 
     const showEmployeesAndAddService = () => {
-        const employeesDiv = document.getElementById("employeesDiv");
+        const employeesDiv = document.getElementById("bookingDiv");
 
         const employees = (
-            <EmployeesCompponent id={ props.id}></EmployeesCompponent>
+            <EmployeesCompponent BussinessId={ props.id}></EmployeesCompponent>
         );
 
         ReactDOM.render(employees, employeesDiv);
@@ -59,7 +59,7 @@ function ServicesCompponent(props) {
      
 
     return (
-        <div style={{ textAlign: "center", justifyContent: "center" }}>
+        <div style={{ textAlign: "center", justifyContent: "center" }} id ="bookingDiv">
             <br></br>
             
             <AddServiceComponent BussinessId={ props.id}></AddServiceComponent>
@@ -75,15 +75,14 @@ function ServicesCompponent(props) {
                                 <h5 className="card-title">{service.name}</h5>
                                 <p className="card-text">Duration: {service.duration} Minutes</p>
                                 <p className="card-text">Price: {service.servicePrice} RON</p>
-                                <button className="btn btn-primary" >Book Now!</button>
+                                <button className="btn btn-primary" onClick={showEmployeesAndAddService } >Book Now!</button>
                             </div>
                              
                         </div>
                     </div>
 
                 ))}
-                <div id="employeesDiv">
-                </div>
+                
              </div>
         </div>
     );

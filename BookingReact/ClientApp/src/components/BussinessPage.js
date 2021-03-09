@@ -9,6 +9,7 @@ const BussinessPage = (props) => {
     const [bussinessDetails, setbussinessDetails] = useState([]);
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
+    const [bookingComponents, setBookingComponents] = useState();
     
     useEffect(() => {
 
@@ -72,8 +73,8 @@ const BussinessPage = (props) => {
         const servicesDiv = (
             <ServicesCompponent id={props.match.params.id}/>
            
-            );
-        ReactDOM.render(servicesDiv, BookDiv);
+        );
+        setBookingComponents(servicesDiv);
 
     }
 
@@ -146,7 +147,7 @@ const BussinessPage = (props) => {
 
               </div>
                         <div id="showRequest">
-
+                            {bookingComponents}
                         </div>
             </div>
                 </div>

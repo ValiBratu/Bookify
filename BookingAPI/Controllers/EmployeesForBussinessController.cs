@@ -21,21 +21,21 @@ namespace BookingAPI.Controllers
             _context = context;
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<IEnumerable<dynamic>>> ServicesByBussinessId(int id)
-        //{
-        //    var services = await _context.Services.ToListAsync();
-
-        //    var bussinessServices = await _context.BussinessServices.ToListAsync();
-
-        //    var query = from service in services
-        //                join bussinesService in bussinessServices on new { BussinessId = id, ServiceId = service.Id } equals new { bussinesService.BussinessId, bussinesService.ServiceId }
-        //                select new { ServiceId = service.Id, ServiceName = service.Name, ServiceDuration = service.Duration, Price = bussinesService.ServicePrice };
+        [HttpGet("{id}")]
+        public async Task<ActionResult<IEnumerable<dynamic>>> EmployeeByBussinessId(int id)
+        {
+            var employees = await _context.Employees.ToListAsync();
 
 
-        //    return query.ToList();
 
-        //}
+            var query = from employee in employees
+                        where employee.BussinessId.Equals(id)
+                        select employee;
+
+
+            return query.ToList();
+
+        }
 
 
 

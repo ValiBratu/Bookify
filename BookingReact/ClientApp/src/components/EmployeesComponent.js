@@ -1,11 +1,12 @@
 ﻿import React, { useState, useEffect } from 'react';
 import AddServiceComponent from './AddServiceComponent';
 import ReactDOM from 'react-dom';
+import AppoinmentComponent from './AppoinmentComponent';
 
 
 function EmployeesCompponent(props) {
 
-    const EmployeesForBussinessApi = "https://localhost:44345/api/ServicesByBussiness/";
+    const EmployeesForBussinessApi = "https://localhost:44345/api/EmployeesForBussiness/";
 
     const [emlpoyees, setEmlpoyees] = useState([]);
 
@@ -23,7 +24,7 @@ function EmployeesCompponent(props) {
     };
 
     const fetchEmlpoyees = () => {
-        fetch(EmployeesForBussinessApi + props.id)
+        fetch(EmployeesForBussinessApi + props.BussinessId)
             .then(response => response.json())
             .then(data => {
                 setEmlpoyees(data);
@@ -47,8 +48,19 @@ function EmployeesCompponent(props) {
 
     }
 
+    const showDatePicker = () => {
+        const calendarDiv = document.getElementById("bookingDiv");
+
+        const calendar = (
+            <AppoinmentComponent ></AppoinmentComponent>
+        );
+
+        ReactDOM.render(calendar, calendarDiv);
+
+    }
+
     return (
-        <div style={{ textAlign: "center", justifyContent: "center" }}>
+        <div style={{ textAlign: "center", justifyContent: "center" }} id="bookingDiv">
             <br></br>
 
             
@@ -63,8 +75,8 @@ function EmployeesCompponent(props) {
                             <div className="card-body">
                                 <h5 className="card-title">{emlpoyee.name}</h5>
                                 <p className="card-text">Description: {emlpoyee.description} Minutes</p>
-                                
-                                <button className="btn btn-primary">Book now!</button>
+
+                                <button className="btn btn-primary" onClick={showDatePicker}>Book now!</button>
                             </div>
 
                         </div>
