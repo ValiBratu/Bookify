@@ -12,6 +12,7 @@ import NavMenu from './components/NavMenu';
 import RegisterPage from './components/RegisterPage';
 import Login from './components/Login';
 import MapComponent from './components/MapComponent';
+import RegisterBussiness from './components/RegisterBussiness';
 
 function App() {
 
@@ -32,7 +33,8 @@ function App() {
                     <Route exact path="/Register" component={RegisterPage}></Route>
 
                     <Route exact path="/Login" component={Login}></Route>
-                   
+
+                    <Route exact path="/RegisterBussiness" component={RegisterBussiness}></Route>
 
                     <Route exact path="/bussiness/{id}"  >
                         <NavMenu></NavMenu>

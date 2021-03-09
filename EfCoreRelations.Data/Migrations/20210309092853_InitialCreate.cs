@@ -13,7 +13,8 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,17 +35,18 @@ namespace EfCoreRelations.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Services",
+                name: "SiteReviews",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Duration = table.Column<int>(type: "int", nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Services", x => x.Id);
+                    table.PrimaryKey("PK_SiteReviews", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,8 +55,7 @@ namespace EfCoreRelations.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,11 +72,14 @@ namespace EfCoreRelations.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CityId = table.Column<int>(type: "int", nullable: false),
+                    Latitude = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
+                    Longitude = table.Column<decimal>(type: "decimal(18,6)", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NrTelefon = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Ratring = table.Column<float>(type: "real", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Rating = table.Column<float>(type: "real", nullable: false),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -105,7 +109,7 @@ namespace EfCoreRelations.Data.Migrations
                     TypeId = table.Column<int>(type: "int", nullable: false),
                     UserTypeId = table.Column<int>(type: "int", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NrTelefon = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -120,53 +124,25 @@ namespace EfCoreRelations.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BussinessServices",
+                name: "Services",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BussinessId = table.Column<int>(type: "int", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false),
+                    Duration = table.Column<int>(type: "int", nullable: false),
                     ServicePrice = table.Column<decimal>(type: "decimal", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BussinessServices", x => x.Id);
+                    table.PrimaryKey("PK_Services", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BussinessServices_Bussinesses_BussinessId",
+                        name: "FK_Services_Bussinesses_BussinessId",
                         column: x => x.BussinessId,
                         principalTable: "Bussinesses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BussinessServices_Services_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "Services",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BussinessId = table.Column<int>(type: "int", nullable: true),
-                    Link = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ServiceId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Employees_Bussinesses_BussinessId",
-                        column: x => x.BussinessId,
-                        principalTable: "Bussinesses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -199,6 +175,36 @@ namespace EfCoreRelations.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BussinessId = table.Column<int>(type: "int", nullable: false),
+                    Link = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ServiceId = table.Column<int>(type: "int", nullable: true),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Employees_Bussinesses_BussinessId",
+                        column: x => x.BussinessId,
+                        principalTable: "Bussinesses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Employees_Services_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Services",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Appoinments",
                 columns: table => new
                 {
@@ -206,7 +212,7 @@ namespace EfCoreRelations.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BussinessId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
@@ -223,38 +229,11 @@ namespace EfCoreRelations.Data.Migrations
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Appoinments_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EmployeeServices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BussinessId = table.Column<int>(type: "int", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeeServices", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_EmployeeServices_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_EmployeeServices_Services_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "Services",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -285,28 +264,13 @@ namespace EfCoreRelations.Data.Migrations
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BussinessServices_BussinessId",
-                table: "BussinessServices",
-                column: "BussinessId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BussinessServices_ServiceId",
-                table: "BussinessServices",
-                column: "ServiceId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Employees_BussinessId",
                 table: "Employees",
                 column: "BussinessId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeServices_EmployeeId",
-                table: "EmployeeServices",
-                column: "EmployeeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EmployeeServices_ServiceId",
-                table: "EmployeeServices",
+                name: "IX_Employees_ServiceId",
+                table: "Employees",
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
@@ -320,6 +284,11 @@ namespace EfCoreRelations.Data.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Services_BussinessId",
+                table: "Services",
+                column: "BussinessId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_UserTypeId",
                 table: "Users",
                 column: "UserTypeId");
@@ -331,28 +300,25 @@ namespace EfCoreRelations.Data.Migrations
                 name: "Appoinments");
 
             migrationBuilder.DropTable(
-                name: "BussinessServices");
-
-            migrationBuilder.DropTable(
-                name: "EmployeeServices");
-
-            migrationBuilder.DropTable(
                 name: "Reviews");
+
+            migrationBuilder.DropTable(
+                name: "SiteReviews");
 
             migrationBuilder.DropTable(
                 name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "Services");
-
-            migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Bussinesses");
+                name: "Services");
 
             migrationBuilder.DropTable(
                 name: "UserTypes");
+
+            migrationBuilder.DropTable(
+                name: "Bussinesses");
 
             migrationBuilder.DropTable(
                 name: "Categories");

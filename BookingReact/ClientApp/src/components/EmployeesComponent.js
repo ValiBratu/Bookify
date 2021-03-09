@@ -1,0 +1,80 @@
+﻿import React, { useState, useEffect } from 'react';
+import AddServiceComponent from './AddServiceComponent';
+import ReactDOM from 'react-dom';
+
+
+function EmployeesCompponent(props) {
+
+    const EmployeesForBussinessApi = "https://localhost:44345/api/ServicesByBussiness/";
+
+    const [emlpoyees, setEmlpoyees] = useState([]);
+
+    useEffect(() => {
+
+        fetchEmlpoyees();
+
+
+    }, []);
+
+    const trashIconStyle = {
+        textAlign: "right",
+        marginRight: "10px",
+        marginTop: "5px"
+    };
+
+    const fetchEmlpoyees = () => {
+        fetch(EmployeesForBussinessApi + props.id)
+            .then(response => response.json())
+            .then(data => {
+                setEmlpoyees(data);
+            })
+            .catch(err => console.log(err))
+    }
+
+
+    const deleteEmployee = (id) => {
+
+        const servicesAPI = "https://localhost:44345/api/Services/";
+        fetch(servicesAPI + id, {
+            method: 'DELETE',
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                fetchEmlpoyees();
+            })
+            .catch(err => console.log(err))
+
+    }
+
+    return (
+        <div style={{ textAlign: "center", justifyContent: "center" }}>
+            <br></br>
+
+            
+            <div className="row">
+
+                {emlpoyees.map((emlpoyee, i) => (
+                    <div className="col col-lg-3" id={emlpoyee.id} key={i}>
+
+                        <div className="card">
+
+                            <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteEmployee(emlpoyee.id)}>delete_sweep</i></a>
+                            <div className="card-body">
+                                <h5 className="card-title">{emlpoyee.name}</h5>
+                                <p className="card-text">Description: {emlpoyee.description} Minutes</p>
+                                
+                                <button className="btn btn-primary">Book now!</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                ))}
+            </div>
+        </div>
+    );
+
+}
+
+export default EmployeesCompponent;

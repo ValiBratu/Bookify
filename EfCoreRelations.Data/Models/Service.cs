@@ -19,8 +19,8 @@ namespace EfCoreRelations.Data.Models
         [Column(TypeName = "decimal")]
         public Decimal ServicePrice { get; set; }
 
-        public ICollection<EmployeeService> Employees { get; set; }
-       
+        public ICollection<Employee> Employees { get; set; }
+
     }
 
     public class ServiceEntityConfiguration : IEntityTypeConfiguration<Service>
@@ -29,7 +29,7 @@ namespace EfCoreRelations.Data.Models
         {
 
 
-           
+
         }
     }
 }

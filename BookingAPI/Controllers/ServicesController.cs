@@ -80,15 +80,7 @@ namespace BookingAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Service>> PostService(Service service)
         {
-            //var bussiness = _context.Bussinesses.Single(b => b.Id == 1);
-            //bussiness.BussinessServices.Add(service);
-            //Service myService = _context.Services.Add(service);
-            //myService.BussinessServices.Add(new BussinessService()
-            //{
-            //    BussinessId=1,
-                
-            //    ServicePrice=service.
-            //})
+          
             _context.Services.Add(service);
             await _context.SaveChangesAsync();
 

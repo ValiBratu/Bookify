@@ -21,7 +21,7 @@ namespace EfCoreRelations.Data.Models
         public User User { get; set; }
 
         [ForeignKey("EmployeeId")]
-        public int EmployeeId { get; set; }
+        public int? EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
         [Column(TypeName = "datetime")]

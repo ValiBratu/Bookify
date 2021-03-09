@@ -41,7 +41,7 @@ namespace BookingAPI
                 }
                 catch (Exception ex)
                 {
-                    throw;
+                    throw ex;
                 }
             }
         }

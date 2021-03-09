@@ -41,19 +41,21 @@ function AddServiceComponent(props) {
         const serviceName = document.getElementById("serviceName").value;
         const servicePrice = document.getElementById("price").value;
 
-        addServiceToDB(serviceName, serviceDuration);
-        //addServiceToBussinessServices(props.BussinessId, newserviceId, servicePrice);
+        addServiceToDB(serviceName, serviceDuration, parseInt(props.BussinessId), parseFloat(servicePrice));
+        
     }
      
     
 
-    const addServiceToDB = (name,duration) => {
+    const addServiceToDB = (ServiceName,ServiceDuration,id,price) => {
 
         const servicesAPI = "https://localhost:44345/api/Services";
 
         const sentData = {
-            name: name,
-            duration: duration
+            name: ServiceName,
+            duration: ServiceDuration,
+            bussinessId: id,
+            servicePrice: price
         }
 
         fetch(servicesAPI, {
@@ -76,32 +78,6 @@ function AddServiceComponent(props) {
     }
 
  
-    //const addServiceToBussinessServices = (bussinessId,serviceId,price) => {
-    //    const servicesAPI = "https://localhost:44345/api/BussinessServices";
-
-    //    const sentData = {
-    //        bussinessId: bussinessId,
-    //        serviceId: serviceId,
-    //        price:price
-    //    }
-
-    //    fetch(servicesAPI, {
-    //        method: 'POST',
-    //        headers: {
-    //            'Content-type': 'application/json'
-    //        },
-    //        body: JSON.stringify(
-    //            sentData)
-    //    })
-    //        .then(response => response.json())
-    //        .then(data => {
-    //            console.log(data);
-                
-    //        })
-    //        .catch(error => {
-    //            console.log(error)
-    //        })
-    //}
 
 
     const changeDuration = (event) => {

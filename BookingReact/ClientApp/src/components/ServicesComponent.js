@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import AddServiceComponent from './AddServiceComponent';
 import ReactDOM from 'react-dom';
+import EmployeesCompponent from './EmployeesComponent';
 function ServicesCompponent(props) {
 
     const servicesForBussinessApi = "https://localhost:44345/api/ServicesByBussiness/";
@@ -45,6 +46,18 @@ function ServicesCompponent(props) {
       
     }
 
+    const showEmployeesAndAddService = () => {
+        const employeesDiv = document.getElementById("employeesDiv");
+
+        const employees = (
+            <EmployeesCompponent id={ props.id}></EmployeesCompponent>
+        );
+
+        ReactDOM.render(employees, employeesDiv);
+
+    }
+     
+
     return (
         <div style={{ textAlign: "center", justifyContent: "center" }}>
             <br></br>
@@ -53,22 +66,24 @@ function ServicesCompponent(props) {
             <div className="row">
 
                 {services.map((service, i) => (
-                    <div className="col col-lg-3" id={service.serviceId} key={i}>
+                    <div className="col col-lg-3" id={service.id} key={i}>
 
                         <div className="card">
                           
-                            <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteService(service.serviceId)}>delete_sweep</i></a>
+                            <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteService(service.id)}>delete_sweep</i></a>
                             <div className="card-body">
-                                <h5 className="card-title">{service.serviceName}</h5>
-                                <p className="card-text">Duration: {service.serviceDuration} Minutes</p>
-                                <p className="card-text">Price: {service.price} RON</p>
-                                <button  className="btn btn-primary">Book Now!</button>
+                                <h5 className="card-title">{service.name}</h5>
+                                <p className="card-text">Duration: {service.duration} Minutes</p>
+                                <p className="card-text">Price: {service.servicePrice} RON</p>
+                                <button className="btn btn-primary" >Book Now!</button>
                             </div>
                              
                         </div>
                     </div>
 
                 ))}
+                <div id="employeesDiv">
+                </div>
              </div>
         </div>
     );

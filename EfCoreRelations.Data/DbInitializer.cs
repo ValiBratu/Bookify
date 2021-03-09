@@ -49,28 +49,14 @@ namespace EfCoreRelations.Data
             }
             var categories = new Category[]
             {
-                new Category{Name="Frizerii",Photo="https://i.imgur.com/rL1tBsc.png"},
-                new Category{Name="Fitness",Photo="https://i.imgur.com/8bnljJ8.jpg"},
-                new Category{Name="Salon de Infrumusetare",Photo="https://i.imgur.com/UAyXMUj.jpeg"}
+                new Category{Name="Frizerii",Photo="https://img.freepik.com/free-vector/barber-shop-pole_7433-50.jpg?size=626&ext=jpg"},
+                new Category{Name="Fitness",Photo="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX31340883.jpg"},
+                new Category{Name="Salon de Infrumusetare",Photo="https://st4.depositphotos.com/5613078/21206/v/450/depositphotos_212069708-stock-illustration-beauty-logo-hair-salon-logo.jpg"}
             };
             context.Categories.AddRange(categories);
             context.SaveChanges();
 
 
-            if (context.Services.Any())
-            {
-                return;
-            }
-            var services = new Service[]
-            {
-                new Service{Name="Tuns",Duration=30},
-                new Service{Name="Barbierit",Duration=30},
-                new Service{Name="Spalat pe cap",Duration=30},
-                new Service{Name="Aranjat",Duration=30},
-            };
-
-            context.Services.AddRange(services);
-            context.SaveChanges();
 
 
             if (context.Users.Any())
@@ -213,6 +199,51 @@ namespace EfCoreRelations.Data
             context.SaveChanges();
 
 
+
+            if (context.SiteReviews.Any())
+            {
+                return;
+            }
+            var siteReviews = new SiteReview[]
+            {
+                new SiteReview
+                {
+                    Name = "Cecile Tournie",
+                    Email= "ctournie0@msn.com",
+                    Description=  "Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui."
+                },
+                new SiteReview
+                {
+                    Name = "Nelly Santorini",
+                    Email= "nsantorini1@umn.edu",
+                    Description= "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo."
+                },
+                 new SiteReview
+                {
+                    Name =  "Charlene Iwanicki",
+                    Email= "ciwanicki2@moonfruit.com",
+                    Description=  "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio."
+                }
+            };
+            context.SiteReviews.AddRange(siteReviews);
+            context.SaveChanges();
+
+            if (context.Services.Any())
+            {
+                return;
+            }
+            var services = new Service[]
+            {
+                new Service{Name="Tuns",Duration=30,ServicePrice=23,BussinessId=3},
+                new Service{Name="Barbierit",Duration=30,ServicePrice=15,BussinessId=1},
+                new Service{Name="Spalat pe cap",Duration=30,ServicePrice=20,BussinessId=3},
+                new Service{Name="Aranjat",Duration=30,ServicePrice=10,BussinessId=3},
+            };
+
+            context.Services.AddRange(services);
+            context.SaveChanges();
+
+
             if (context.Employees.Any())
             {
                 return;
@@ -276,38 +307,6 @@ namespace EfCoreRelations.Data
             };
             context.Employees.AddRange(employees);
             context.SaveChanges();
-
-
-            if (context.SiteReviews.Any())
-            {
-                return;
-            }
-            var siteReviews = new SiteReview[]
-            {
-                new SiteReview
-                {
-                    Name = "Cecile Tournie",
-                    Email= "ctournie0@msn.com",
-                    Description=  "Nunc purus. Phasellus in felis. Donec semper sapien a libero. Nam dui."
-                },
-                new SiteReview
-                {
-                    Name = "Nelly Santorini",
-                    Email= "nsantorini1@umn.edu",
-                    Description= "Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo."
-                },
-                 new SiteReview
-                {
-                    Name =  "Charlene Iwanicki",
-                    Email= "ciwanicki2@moonfruit.com",
-                    Description=  "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio."
-                }
-            };
-            context.SiteReviews.AddRange(siteReviews);
-            context.SaveChanges();
-
-
-
 
         }
     }

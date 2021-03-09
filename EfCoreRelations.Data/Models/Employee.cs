@@ -17,7 +17,7 @@ namespace EfCoreRelations.Data.Models
         public string Description { get; set; }
 
         [ForeignKey("BussinessId")]
-        public int? BussinessId { get; set; }
+        public int BussinessId { get; set; }
         public string Link { get; set; }
 
         [ForeignKey("ServiceId")]
@@ -25,8 +25,7 @@ namespace EfCoreRelations.Data.Models
 
         public string Photo { get; set; }
 
-        public ICollection<EmployeeService> Services { get; set; }
-
+        
         public Bussiness Bussiness { get; set; }
         public ICollection<Appoinment> Appoinments { get; set; }
     }

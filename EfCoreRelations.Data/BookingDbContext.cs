@@ -27,7 +27,7 @@ namespace EfCoreRelations.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
-        public DbSet<EmployeeService> EmployeeServices { get; set; }
+        
 
         public DbSet<SiteReview> SiteReviews { get; set; }
 
