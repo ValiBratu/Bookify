@@ -13,8 +13,6 @@ function Bussinesses(props) {
         selectOptions: []
     });
 
-    const [keepAllBussinesses, setKeepAllBussinesses] = useState([]);
-
     
 
     var BussinessUrl = "/bussiness/";
@@ -28,7 +26,7 @@ function Bussinesses(props) {
 
                 console.log(bussinessList);
                 setBussinessList(data);
-                setKeepAllBussinesses(data);
+             
             })
             .catch(err => console.log(err))
 
@@ -50,31 +48,26 @@ function Bussinesses(props) {
 
 
 
-    const getBussinessByCity = (cityid, listOfBussinesses) => {
-        console.log(cityid);
-        const arrayOfBussinesses = [];
+    const getBussinessByCity = (cityid) => {
+        const BussinessesByCityAndCategoryApi = "https://localhost:44345/api/BussinessByCategories/" + props.match.params.id + "/city/" + cityid;
 
-        if (cityid == 0) {
-            setBussinessList(listOfBussinesses);
-            return;
-        }
+        fetch(BussinessesByCityAndCategoryApi)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
 
-        listOfBussinesses.map((bussiness, i) => {
-            
+                console.log(bussinessList);
+                setBussinessList(data);
 
-            if (bussiness.cityId == cityid) {
-                arrayOfBussinesses.push(bussiness);
-            }
+            })
+            .catch(err => console.log(err))
 
-        })
-        console.log(arrayOfBussinesses);
-        setBussinessList(arrayOfBussinesses);
     }
 
 
     const updateCity = (event) => {
         
-        getBussinessByCity(event.value, keepAllBussinesses);
+        getBussinessByCity(event.value);
     }
 
 

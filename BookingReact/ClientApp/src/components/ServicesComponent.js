@@ -21,6 +21,8 @@ function ServicesCompponent(props) {
     marginTop: "5px"
     };
 
+
+    
     const fetchServices = () => {
         fetch(servicesForBussinessApi + props.id)
             .then(response => response.json())
@@ -46,14 +48,16 @@ function ServicesCompponent(props) {
       
     }
 
+
     const showEmployeesAndAddService = () => {
-        const employeesDiv = document.getElementById("bookingDiv");
+        const employeesDiv = document.getElementById("BookingDiv");
+        
+        const employees = <EmployeesCompponent BussinessId={props.id}></EmployeesCompponent>;
 
-        const employees = (
-            <EmployeesCompponent BussinessId={ props.id}></EmployeesCompponent>
-        );
 
-        ReactDOM.render(employees, employeesDiv);
+        //const employees = document.createElement("EmployeesCompponent");
+        //employees.setAttribute("BussinessId",props.id);
+
 
     }
      

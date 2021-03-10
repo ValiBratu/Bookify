@@ -1,31 +1,15 @@
 ﻿import React, { useState, useEffect } from 'react';
 
-import { DatePicker } from 'react-datepicker';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 function AppoinmentComponent(props) {
+    const [startDate, setStartDate] = useState(new Date());
 
-
-    const [hours, setHours] = useState();
-
-    const [minutes, setMinutes] = useState();
-
-    const [startDate, setStartDate] = useState(
-        setHours(setMinutes(new Date(), 0), 9)
-    );
-    const filterPassedTime = time => {
-        const currentDate = new Date();
-        const selectedDate = new Date(time);
-
-        return currentDate.getTime() < selectedDate.getTime();
-    }
+ 
     return (
-        <DatePicker
-            selected={startDate}
-            onChange={date => setStartDate(date)}
-            showTimeSelect
-            filterTime={filterPassedTime}
-            dateFormat="MMMM d, yyyy h:mm aa"
-        />
+        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
     );
 
 }

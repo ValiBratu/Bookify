@@ -101,6 +101,7 @@ function AddServiceComponent(props) {
                     <div className="input-group">
                         <div className="input-group-prepend">
                         </div>
+                      
                         <input type="text" className="form-control" placeholder="Service Name" name="serviceName" id="serviceName" />
                     </div>
 

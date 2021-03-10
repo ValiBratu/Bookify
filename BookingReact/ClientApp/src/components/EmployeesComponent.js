@@ -49,13 +49,9 @@ function EmployeesCompponent(props) {
     }
 
     const showDatePicker = () => {
-        const calendarDiv = document.getElementById("bookingDiv");
+        
 
-        const calendar = (
-            <AppoinmentComponent ></AppoinmentComponent>
-        );
-
-        ReactDOM.render(calendar, calendarDiv);
+       
 
     }
 
