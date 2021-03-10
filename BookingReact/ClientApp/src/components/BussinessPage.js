@@ -20,10 +20,7 @@ const BussinessPage = (props) => {
 
     });
 
-    //const [bookingComponents, setBookingComponents] = useState({
-
-
-    //});
+    const [bookingComponents, setBookingComponents] = useState();
     
     useEffect(() => {
 
