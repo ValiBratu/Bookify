@@ -48,7 +48,7 @@ function EditBussinessComponent(props) {
         }
 
         fetch(editApi, {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-type': 'application/json'
             },
@@ -83,38 +83,38 @@ function EditBussinessComponent(props) {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <label for="name">Name</label>
+                    <label htmlFor="name">Name</label>
                     <div className="input-group">
 
-                        <input type="text" className="form-control" value={props.businessDetails.name} name="name" id="name" />
+                        <input type="text" className="form-control" defaultValue={props.businessDetails.name} name="name" id="name" />
                     </div>
 
                     <br></br>
 
-                    <label for="description">Description</label>
+                    <label htmlFor="description">Description</label>
                     <div className="input-group">
 
-                        <input type="text" className="form-control" value={props.businessDetails.description} name="description" id="description" />
+                        <input type="text" className="form-control" defaultValue={props.businessDetails.description} name="description" id="description" />
                     </div>
                     <br></br>
 
-                    <label for="phoneNumber">Phone Number</label>
+                    <label htmlFor="phoneNumber">Phone Number</label>
                     <div className="input-group">
                         
-                        <input type="tel" className="form-control" value={props.businessDetails.phoneNumber}  name="phoneNumber" id="phoneNumber" />
+                        <input type="tel" className="form-control" defaultValue={props.businessDetails.phoneNumber}  name="phoneNumber" id="phoneNumber" />
                     </div>
                     <br></br>
 
-                    <label for="email">Email</label>
+                    <label htmlFor="email">Email</label>
                     <div className="input-group">
 
-                        <input type="email" className="form-control" value={props.businessDetails.email} name="email" id="email" />
+                        <input type="email" className="form-control" defaultValue={props.businessDetails.email} name="email" id="email" />
                     </div>
                     <br></br>
 
-                    <label for="location">Location</label>
+                    <label htmlFor="location">Location</label>
                     <div className="input-group">
-                        <input type="text" className="form-control" value={props.businessDetails.location} name="location" id="location" />
+                        <input type="text" className="form-control" defaultValue={props.businessDetails.location} name="location" id="location" />
                     </div>
                     <br></br>
 
