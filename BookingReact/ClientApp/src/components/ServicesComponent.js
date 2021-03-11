@@ -49,10 +49,10 @@ function ServicesCompponent(props) {
     }
 
 
-    const showEmployeesAndAddService = (serviceid) => {
+    const showEmployeesAndAddService = (serviceid,servicename,serviceduration) => {
 
         const bookData = props.data;
-        bookData.serviceId = serviceid;
+        bookData.service = { serviceId: serviceid, serviceName: servicename, serviceDuration: serviceduration};
 
         const employees = (<div>
 
@@ -84,7 +84,7 @@ function ServicesCompponent(props) {
                                 <h5 className="card-title">{service.name}</h5>
                                 <p className="card-text">Duration: {service.duration} Minutes</p>
                                 <p className="card-text">Price: {service.servicePrice} RON</p>
-                                <button className="btn btn-primary" onClick={() => showEmployeesAndAddService(service.id)} >Book Now!</button>
+                                <button className="btn btn-primary" onClick={() => showEmployeesAndAddService(service.id,service.name,service.duration)} >Book Now!</button>
                             </div>
                              
                         </div>

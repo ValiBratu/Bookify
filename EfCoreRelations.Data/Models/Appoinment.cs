@@ -27,6 +27,8 @@ namespace EfCoreRelations.Data.Models
         [Column(TypeName = "datetime")]
         public DateTime Date { get; set; }
 
+        [ForeignKey("ServiceId")]
+        public int ServiceId { get; set; }
     }
 
     public class AppoinmentEntityConfiguration : IEntityTypeConfiguration<Appoinment>

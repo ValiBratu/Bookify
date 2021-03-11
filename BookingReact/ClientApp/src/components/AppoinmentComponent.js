@@ -25,9 +25,9 @@ function AppoinmentComponent(props) {
         console.log(bookData);
 
         const schedule = (
-            <ScheduleComponent></ScheduleComponent>
-            );
-
+            <ScheduleComponent data={bookData}></ScheduleComponent>
+        );
+        addAppoinmentToDb(bookData);
         props.bookComp(schedule);
     }
     const filterPassedTime = time => {
@@ -37,7 +37,35 @@ function AppoinmentComponent(props) {
         return currentDate.getTime() < selectedDate.getTime();
     }
 
-    
+    const addAppoinmentToDb = (bookData) => {
+        const appoinmentsAPI = "https://localhost:44345/api/Appoinments";
+
+        const sentData = {
+            bussinessId: parseInt(bookData.bussiness.bussinessId),
+            userId: bookData.userId,
+            date: bookData.date,
+            serviceId: bookData.service.serviceId,
+            employeeId: bookData.employee.employeeId
+        }
+
+        fetch(appoinmentsAPI, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(
+                sentData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+    }
 
 
     return (

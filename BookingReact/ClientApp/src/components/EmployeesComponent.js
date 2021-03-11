@@ -48,12 +48,12 @@ function EmployeesCompponent(props) {
 
     }
 
-    const showDatePickerAndAddEmployee = (employeeid) => {
+    const showDatePickerAndAddEmployee = (employeeid,employeename) => {
         
         
 
         const bookData = props.data;
-        bookData.employeeId = employeeid;
+        bookData.employee = { employeeId: employeeid, employeeName: employeename };
 
         const calendarComp = (<div>
             <h2 style={{ textAlign: "center" }} >Calendar</h2>
@@ -85,7 +85,7 @@ function EmployeesCompponent(props) {
                                 <h5 className="card-title">{emlpoyee.name}</h5>
                                 <p className="card-text">Description: {emlpoyee.description}</p>
 
-                                <button className="btn btn-primary" onClick={() => showDatePickerAndAddEmployee(emlpoyee.id)}>Book now!</button>
+                                <button className="btn btn-primary" onClick={() => showDatePickerAndAddEmployee(emlpoyee.id, emlpoyee.name)}>Book now!</button>
                             </div>
 
                         </div>

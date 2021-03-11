@@ -15,10 +15,11 @@ const BussinessPage = (props) => {
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
     const [bookingData, setbookingData] = useState({
-        bussinessId: props.match.params.id,
-        serviceId: null,
-        employeeId: null,
-        date:null
+        bussiness: { bussinessId:null, bussinessName:null },
+        service: { serviceId:null, serviceName:null, serviceDuration:null },
+        employee: {employeeId:null,employeeName:null},
+        date: null,
+        userId:1
 
     });
 
@@ -74,9 +75,11 @@ const BussinessPage = (props) => {
     }
 
 
-    const renderServices = () => {
+    const renderServices = (bussinessid,bussinessname) => {
         makeIconsSameClass();
-
+        const setData = bookingData;
+        setData.bussiness = { bussinessId: bussinessid, bussinessName: bussinessname };
+        
         
         const BookIcon = document.getElementById("BookIcon");
 
@@ -86,7 +89,7 @@ const BussinessPage = (props) => {
         const serviceComp = (<div>
             <h2 style={{ textAlign: "center" }} >Services</h2>
             <div id="servicesDiv">
-                <ServicesCompponent id={props.match.params.id} bookComp={updateComponent} data={bookingData} />
+                <ServicesCompponent id={props.match.params.id} bookComp={updateComponent} data={setData} />
 
             </div>
         </div>);
@@ -95,6 +98,7 @@ const BussinessPage = (props) => {
 
 
     }
+
 
     const updateComponent = (comp) => {
         setBookingComponents(comp);
@@ -164,8 +168,8 @@ const BussinessPage = (props) => {
                           <i className="material-icons">palette</i> Working place
                         </a>
                       </li>
-                        <li className="nav-item">
-                            <a className="nav-link" id="BookIcon" onClick={renderServices} role="tab" data-toggle="tab">
+                    <li className="nav-item">
+                       <a className="nav-link" id="BookIcon" onClick={() => renderServices(bussinessDetails.id, bussinessDetails.name)} role="tab" data-toggle="tab">
                           <i className="material-icons">favorite</i> Book now
                         </a>
                       </li>

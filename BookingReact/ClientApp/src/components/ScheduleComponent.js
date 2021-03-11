@@ -9,12 +9,24 @@ import {
     AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
 
+
 function ScheduleComponent(props) {
 
 
     const currentDate = Date.now();
-   
 
+    const startdate = props.data.date;
+    const enddate = new Date(startdate);
+
+    enddate.setMinutes(startdate.getMinutes() + props.data.service.serviceDuration);
+    console.log(startdate);
+    console.log(enddate);
+
+    //console.log(props.data.service.serviceDuration)
+
+    const appointments = [
+        { title: props.data.service.serviceName, startDate: startdate, endDate: enddate }
+    ];
 
 
     return (
@@ -23,7 +35,7 @@ function ScheduleComponent(props) {
             <br></br>
             <Paper>
                 <Scheduler
-
+                    data={appointments}
                     height={660}
                 >
                     <ViewState
