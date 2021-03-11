@@ -31,23 +31,17 @@ function EditBussinessComponent(props) {
 
         editBussiness(parseInt(props.id),
             props.userId,
-            props.cityId,
-            props.categoryId,
-            props.latitude,
-            props.longitude,
             name,
             description,
             phone,
             email,
-            location,
-            props.rating,
-            props.photo);
+            location,);
 
     }
 
 
 
-    const editBussiness = (BussinessId,userid,cityid,categoryid,lat,long,BussinessName, BussinessDescription, BussinessPhone,BussinessEmail,BussinessLocation,bussinessRating,bussinessPhoto) => {
+    const editBussiness = (BussinessId,userid,BussinessName, BussinessDescription, BussinessPhone,BussinessEmail,BussinessLocation) => {
 
         const editApi = "https://localhost:44345/api/Bussinesses/" + BussinessId;
 
@@ -56,15 +50,12 @@ function EditBussinessComponent(props) {
             userId: userid,
             name: BussinessName,
             email: BussinessEmail,
-            cityId: cityid,
-            latitude: lat,
-            longitude: long,
+
             location: BussinessLocation,
             phoneNumber: BussinessPhone,
-            categoryId: categoryid,
+
             description: BussinessDescription,
-            rating: bussinessRating,
-            photo: bussinessPhoto
+
 
 
         }
@@ -77,7 +68,7 @@ function EditBussinessComponent(props) {
             body: JSON.stringify(
                 sentData)
         })
-            .then(response => response.json())
+            .then(response => { console.log(response)})
             .then(data => {
                 console.log(data);
 

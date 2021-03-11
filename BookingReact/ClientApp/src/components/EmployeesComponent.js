@@ -58,7 +58,7 @@ function EmployeesCompponent(props) {
         const calendarComp = (<div>
             <h2 style={{ textAlign: "center" }} >Calendar</h2>
             <div id="calendarDiv" style={{ textAlign: "center" }}>
-                <AppoinmentComponent id={props.BussinessId} data={bookData} />
+                <AppoinmentComponent id={props.BussinessId} data={bookData} bookComp={props.bookComp} />
                 </div>
             <br></br>
             <br></br>

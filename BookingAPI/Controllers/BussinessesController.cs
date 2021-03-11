@@ -48,27 +48,28 @@ namespace BookingAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBussiness(int id, Bussiness bussiness)
         {
-            if (id != bussiness.Id)
+            if (!_context.Bussinesses.Any(b => b.Id == id))
             {
                 return BadRequest();
             }
-
-            _context.Entry(bussiness).State = EntityState.Modified;
-
+            
             try
             {
+                var currentBussiness = _context.Bussinesses.Single(b => b.Id == id);
+
+                currentBussiness.Name = bussiness.Name;
+                currentBussiness.Description = bussiness.Description;
+                currentBussiness.PhoneNumber = bussiness.PhoneNumber;
+                currentBussiness.Location = bussiness.Location;
+                currentBussiness.Email = bussiness.Email;
                 await _context.SaveChangesAsync();
+                //return CreatedAtAction("GetBussiness", new { id = bussiness.Id }, bussiness);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!BussinessExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+
+                throw;
+                
             }
 
             return NoContent();
