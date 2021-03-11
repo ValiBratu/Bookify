@@ -49,15 +49,20 @@ function ServicesCompponent(props) {
     }
 
 
-    const showEmployeesAndAddService = () => {
-        const employeesDiv = document.getElementById("BookingDiv");
-        
-        const employees = <EmployeesCompponent BussinessId={props.id}></EmployeesCompponent>;
+    const showEmployeesAndAddService = (serviceid) => {
 
+        const bookData = props.data;
+        bookData.serviceId = serviceid;
 
-        //const employees = document.createElement("EmployeesCompponent");
-        //employees.setAttribute("BussinessId",props.id);
+        const employees = (<div>
 
+            <h2 style={{ textAlign: "center" }} >Employees</h2>
+            <div id="employeesDiv">
+                <EmployeesCompponent BussinessId={props.id} bookComp={props.bookComp} data={bookData} />
+            </div>
+        </div>);
+
+        props.bookComp(employees);
 
     }
      
@@ -66,7 +71,7 @@ function ServicesCompponent(props) {
         <div style={{ textAlign: "center", justifyContent: "center" }} id ="bookingDiv">
             <br></br>
             
-            <AddServiceComponent BussinessId={ props.id}></AddServiceComponent>
+         
             <div className="row">
 
                 {services.map((service, i) => (
@@ -79,7 +84,7 @@ function ServicesCompponent(props) {
                                 <h5 className="card-title">{service.name}</h5>
                                 <p className="card-text">Duration: {service.duration} Minutes</p>
                                 <p className="card-text">Price: {service.servicePrice} RON</p>
-                                <button className="btn btn-primary" onClick={showEmployeesAndAddService } >Book Now!</button>
+                                <button className="btn btn-primary" onClick={() => showEmployeesAndAddService(service.id)} >Book Now!</button>
                             </div>
                              
                         </div>

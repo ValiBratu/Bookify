@@ -48,10 +48,23 @@ function EmployeesCompponent(props) {
 
     }
 
-    const showDatePicker = () => {
+    const showDatePickerAndAddEmployee = (employeeid) => {
+        
         
 
-       
+        const bookData = props.data;
+        bookData.employeeId = employeeid;
+
+        const calendarComp = (<div>
+            <h2 style={{ textAlign: "center" }} >Calendar</h2>
+            <div id="calendarDiv" style={{ textAlign: "center" }}>
+                <AppoinmentComponent id={props.BussinessId} data={bookData} />
+                </div>
+            <br></br>
+            <br></br>
+        </div>);
+
+        props.bookComp(calendarComp);
 
     }
 
@@ -70,9 +83,9 @@ function EmployeesCompponent(props) {
                             <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteEmployee(emlpoyee.id)}>delete_sweep</i></a>
                             <div className="card-body">
                                 <h5 className="card-title">{emlpoyee.name}</h5>
-                                <p className="card-text">Description: {emlpoyee.description} Minutes</p>
+                                <p className="card-text">Description: {emlpoyee.description}</p>
 
-                                <button className="btn btn-primary" onClick={showDatePicker}>Book now!</button>
+                                <button className="btn btn-primary" onClick={() => showDatePickerAndAddEmployee(emlpoyee.id)}>Book now!</button>
                             </div>
 
                         </div>

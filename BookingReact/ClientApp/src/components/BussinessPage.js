@@ -5,6 +5,8 @@ import ServicesCompponent from './ServicesComponent';
 import AppoinmentComponent from './AppoinmentComponent';
 import EmployeesCompponent from './EmployeesComponent';
 import EditBussinessComponent from './EditBussinessComponentcs';
+import AddServiceComponent from './AddServiceComponent';
+import AddEmployeeComponent from './AddEmployeeComponent';
 
 const BussinessPage = (props) => {
 
@@ -13,7 +15,7 @@ const BussinessPage = (props) => {
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
     const [bookingData, setbookingData] = useState({
-        bussinessId: null,
+        bussinessId: props.match.params.id,
         serviceId: null,
         employeeId: null,
         date:null
@@ -67,7 +69,7 @@ const BussinessPage = (props) => {
 
         LocationIcon.setAttribute("class", "nav-link active");
 
-        ReactDOM.render(Map, MapDiv);
+        setBookingComponents(Map);
      
     }
 
@@ -80,32 +82,22 @@ const BussinessPage = (props) => {
 
         BookIcon.setAttribute("class", "nav-link active");
 
-        const bookingDiv = document.getElementById("showRequest");
 
-        const bookingComponents = (
-            <div>
-                <h2 style={{ textAlign: "center" }} >Services</h2>
-                <div id="servicesDiv">
-                    <ServicesCompponent id={props.match.params.id} />
+        const serviceComp = (<div>
+            <h2 style={{ textAlign: "center" }} >Services</h2>
+            <div id="servicesDiv">
+                <ServicesCompponent id={props.match.params.id} bookComp={updateComponent} data={bookingData} />
 
-                </div>
-
-                <h2 style={{ textAlign: "center" }} >Employees</h2>
-                <div id="employeesDiv">
-                    <EmployeesCompponent BussinessId={props.match.params.id} />
-                </div>
-
-                <h2 style={{ textAlign: "center" }} >Calendar</h2>
-                <div id="calendarDiv" style={{ textAlign: "center" }}>
-                    <AppoinmentComponent id={props.match.params.id} />
-                </div>
-                <br></br>
-                    <br></br>
             </div>
-            );
+        </div>);
 
-        ReactDOM.render(bookingComponents, bookingDiv);
+        updateComponent(serviceComp);
 
+
+    }
+
+    const updateComponent = (comp) => {
+        setBookingComponents(comp);
     }
 
 
@@ -123,7 +115,11 @@ const BussinessPage = (props) => {
           <div className="profile-content">
             <div className="container">
                 <br></br>
-                <EditBussinessComponent id={props.match.params.id} businessDetails={bussinessDetails}></EditBussinessComponent>
+                        <EditBussinessComponent id={props.match.params.id} businessDetails={bussinessDetails}></EditBussinessComponent>
+                        
+                        <AddServiceComponent BussinessId={props.match.params.id}></AddServiceComponent>
+
+                        <AddEmployeeComponent BussinessId={props.match.params.id}></AddEmployeeComponent>
               <div className="row">
                 <div className="col-md-6 ml-auto mr-auto">
                   <div className="profile">
@@ -180,7 +176,7 @@ const BussinessPage = (props) => {
 
                     <div id= "showRequest">
 
-
+                            {bookingComponents }
 
                      </div>
 

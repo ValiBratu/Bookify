@@ -29,22 +29,44 @@ function EditBussinessComponent(props) {
         const email = document.getElementById("email").value;
         const location = document.getElementById("location").value;
 
-        editBussiness(props.id, name, description, phone, email, location);
+        editBussiness(parseInt(props.id),
+            props.userId,
+            props.cityId,
+            props.categoryId,
+            props.latitude,
+            props.longitude,
+            name,
+            description,
+            phone,
+            email,
+            location,
+            props.rating,
+            props.photo);
 
     }
 
 
 
-    const editBussiness = (BussinessId,BussinessName, BussinessDescription, BussinessPhone,BussinessEmail,BussinessLocation) => {
+    const editBussiness = (BussinessId,userid,cityid,categoryid,lat,long,BussinessName, BussinessDescription, BussinessPhone,BussinessEmail,BussinessLocation,bussinessRating,bussinessPhoto) => {
 
         const editApi = "https://localhost:44345/api/Bussinesses/" + BussinessId;
 
         const sentData = {
+            id: BussinessId,
+            userId: userid,
             name: BussinessName,
-            description: BussinessDescription,
-            phoneNumber: BussinessPhone,
             email: BussinessEmail,
-            location: BussinessLocation
+            cityId: cityid,
+            latitude: lat,
+            longitude: long,
+            location: BussinessLocation,
+            phoneNumber: BussinessPhone,
+            categoryId: categoryid,
+            description: BussinessDescription,
+            rating: bussinessRating,
+            photo: bussinessPhoto
+
+
         }
 
         fetch(editApi, {
