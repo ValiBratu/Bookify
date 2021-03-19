@@ -116,7 +116,7 @@ namespace EfCoreRelations.Data
                     CategoryId= 1,
                     Description= "Velit nulla proident aliqua laborum do est fugiat laborum et aute. Nulla occaecat do nostrud ullamco irure ea exercitation ullamco sit proident. Magna laborum irure aliqua aliquip aute amet. Dolor et adipisicing ea magna laborum voluptate deserunt. Culpa quis sunt minim occaecat deserunt aute do.",
                     Rating= 4,
-                    Photo="",
+                    
                     Latitude=44.435851M,
                     Longitude=26.105388M
                 },
@@ -131,7 +131,7 @@ namespace EfCoreRelations.Data
                     CategoryId= 1,
                     Description=  "Esse amet cupidatat Lorem ex cupidatat exercitation est non incididunt pariatur. Culpa aute nostrud anim nisi. Proident deserunt quis et ipsum nulla Lorem laboris minim duis. Est do fugiat id nisi qui aliquip excepteur nostrud ipsum aliquip. Magna reprehenderit esse velit reprehenderit irure culpa dolore aliqua ex do ut laborum tempor. Et non eiusmod fugiat cupidatat magna dolore cillum sunt id aliquip eu deserunt. Nulla commodo Lorem officia nostrud Lorem anim do dolore ipsum commodo mollit commodo",
                     Rating = 3,
-                    Photo="",
+                    
                     Latitude=45.652541M,
                     Longitude=25.621590M
                 },
@@ -146,7 +146,7 @@ namespace EfCoreRelations.Data
                     CategoryId= 1,
                     Description=  "Lorem sunt adipisicing pariatur quis magna ea in qui occaecat id laborum sit ex. Ea exercitation reprehenderit cillum dolore eu officia mollit. Nostrud ullamco non eu dolore ea proident qui aliquip Lorem occaecat. Minim nulla irure dolor fugiat cupidatat voluptate velit consectetur sint. Eu nulla ut non duis enim cillum non aliquip cupidatat. Anim eiusmod qui cupidatat minim.",
                     Rating = 5,
-                    Photo="",
+                   
                     Latitude=45.648854M,
                     Longitude=25.601645M
                 },//

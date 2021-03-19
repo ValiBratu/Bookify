@@ -41,19 +41,19 @@ function EmployeesCompponent(props) {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                
                 fetchEmlpoyees();
             })
             .catch(err => console.log(err))
 
     }
 
-    const showDatePickerAndAddEmployee = (employeeid,employeename) => {
+    const showDatePickerAndAddEmployee = (employeeid) => {
         
         
 
         const bookData = props.data;
-        bookData.employee = { employeeId: employeeid, employeeName: employeename };
+        bookData.employeeId = employeeid;
 
         const calendarComp = (<div>
             <h2 style={{ textAlign: "center" }} >Calendar</h2>

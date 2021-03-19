@@ -4,38 +4,22 @@ using EfCoreRelations.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EfCoreRelations.Data.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    partial class BookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210318133001_Removed_PhotoColumn_From_BussinessTable")]
+    partial class Removed_PhotoColumn_From_BussinessTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
-
-            modelBuilder.Entity("BookingAPI.Models.BussinessPhoto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("BussinessId")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("BussinessImage")
-                        .HasColumnType("image");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BussinessPhotos");
-                });
 
             modelBuilder.Entity("BookingAPI.Models.User", b =>
                 {
@@ -154,9 +138,6 @@ namespace EfCoreRelations.Data.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("Photo")
-                        .HasColumnType("image");
 
                     b.Property<float>("Rating")
                         .HasColumnType("real");

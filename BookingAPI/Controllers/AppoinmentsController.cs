@@ -80,6 +80,20 @@ namespace BookingAPI
         [HttpPost]
         public async Task<ActionResult<Appoinment>> PostAppoinment(Appoinment appoinment)
         {
+
+            var allApoinments = await _context.Appoinments.ToListAsync();
+
+            var checkAppoinmentsWithSameDate = from checkAppoinment in allApoinments
+                                               where checkAppoinment.EmployeeId.Equals(appoinment.EmployeeId) && checkAppoinment.BussinessId.Equals(appoinment.BussinessId) && checkIfAppoinmentExists(checkAppoinment, appoinment)
+                                               select checkAppoinment;
+
+
+
+            if (checkAppoinmentsWithSameDate.Any())
+            {
+                return BadRequest();
+            }
+
             _context.Appoinments.Add(appoinment);
             await _context.SaveChangesAsync();
 
@@ -106,5 +120,61 @@ namespace BookingAPI
         {
             return _context.Appoinments.Any(e => e.Id == id);
         }
+
+        [HttpGet("{id}/employee/{employeeId}")]
+        public async Task<ActionResult<IEnumerable<dynamic>>> AppoinmentsByBussinessAndEmployee(int id, int employeeId)
+        {
+
+            var bussiness = await _context.Bussinesses.FindAsync(id);
+            var employee = await _context.Employees.FindAsync(employeeId);
+
+            var services = await _context.Services.ToListAsync();
+
+            var users = await _context.Users.ToListAsync();
+
+            var appoinments = await _context.Appoinments.ToListAsync();
+
+            var appoinmentsByBussinessAndEmployee = from appoinment in appoinments
+                        where appoinment.EmployeeId.Equals(employeeId) && appoinment.BussinessId.Equals(id)
+                        select appoinment;
+
+            var query = from appoinment in appoinmentsByBussinessAndEmployee
+                        join service in services on appoinment.ServiceId equals service.Id
+                        join user in users on appoinment.UserId equals user.Id
+                        select new
+                        {
+                            EmployeeName = employee.Name,
+                            EmployeeId = employee.Id,
+                            UserName = user.FirstName + " " + user.LastName,
+                            UserId = user.Id,
+                            ServiceName = service.Name,
+                            Price = service.ServicePrice,
+                            ServiceDuration = service.Duration,
+                            AppoinmentDate = appoinment.Date
+                        };
+
+            return query.ToList();
+        }
+
+        private bool checkIfAppoinmentExists(Appoinment firstAppoinment, Appoinment secondAppoinment)
+        {
+
+            if((firstAppoinment.Date.Year==secondAppoinment.Date.Year)&&
+                (firstAppoinment.Date.Month==secondAppoinment.Date.Month)&&
+                (firstAppoinment.Date.Day==secondAppoinment.Date.Day)&&
+                (firstAppoinment.Date.Hour==secondAppoinment.Date.Hour)&&
+                (firstAppoinment.Date.Minute == secondAppoinment.Date.Minute)&&
+                (firstAppoinment.BussinessId==secondAppoinment.BussinessId)&&
+                (firstAppoinment.EmployeeId==secondAppoinment.EmployeeId))
+            {
+                return true;
+            }
+                
+         
+            return false;
+        }
     }
 }
+///var query = from service in services
+//    join bussinesService in bussinessServices on new { BussinessId = id, ServiceId = service.Id } equals new { bussinesService.BussinessId, bussinesService.ServiceId }
+//    select new { ServiceId = service.Id, ServiceName = service.Name, ServiceDuration = service.Duration, Price = bussinesService.ServicePrice };

@@ -41,7 +41,7 @@ function ServicesCompponent(props) {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                
                 fetchServices();
             })
             .catch(err=>console.log(err))
@@ -49,10 +49,10 @@ function ServicesCompponent(props) {
     }
 
 
-    const showEmployeesAndAddService = (serviceid,servicename,serviceduration) => {
+    const showEmployeesAndAddService = (serviceid) => {
 
         const bookData = props.data;
-        bookData.service = { serviceId: serviceid, serviceName: servicename, serviceDuration: serviceduration};
+        bookData.serviceId = serviceid;
 
         const employees = (<div>
 

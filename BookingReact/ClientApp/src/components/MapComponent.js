@@ -2,6 +2,7 @@
 import { ReactBingmaps } from 'react-bingmaps';
 
 
+
 function MapComponent(props) {
 
     const mapStyle = {

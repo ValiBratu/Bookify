@@ -15,9 +15,9 @@ const BussinessPage = (props) => {
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
     const [bookingData, setbookingData] = useState({
-        bussiness: { bussinessId:null, bussinessName:null },
-        service: { serviceId:null, serviceName:null, serviceDuration:null },
-        employee: {employeeId:null,employeeName:null},
+        bussinessId: null,
+        serviceId:null,
+        employeeId: null,
         date: null,
         userId:1
 
@@ -75,10 +75,10 @@ const BussinessPage = (props) => {
     }
 
 
-    const renderServices = (bussinessid,bussinessname) => {
+    const renderServices = (bussinessid) => {
         makeIconsSameClass();
         const setData = bookingData;
-        setData.bussiness = { bussinessId: bussinessid, bussinessName: bussinessname };
+        setData.bussinessId = bussinessid;
         
         
         const BookIcon = document.getElementById("BookIcon");

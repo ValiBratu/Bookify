@@ -28,7 +28,7 @@ function EditBussinessComponent(props) {
         const phone = document.getElementById("phoneNumber").value;
         const email = document.getElementById("email").value;
         const location = document.getElementById("location").value;
-
+        console.log(document.getElementById("customFile").value);
         editBussiness(parseInt(props.id),
             props.userId,
             name,
@@ -128,6 +128,12 @@ function EditBussinessComponent(props) {
                     <label htmlFor="location">Location</label>
                     <div className="input-group">
                         <input type="text" className="form-control" defaultValue={props.businessDetails.location} name="location" id="location" />
+                    </div>
+                    <br></br>
+
+                    <label className="form-label" htmlFor="customFile">Bussiness Default Photo</label>
+                    <div className="input-group">
+                        <input type="file" className="form-control" id="customFile" />
                     </div>
                     <br></br>
 

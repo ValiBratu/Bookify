@@ -8,25 +8,54 @@ import {
     Appointments,
     AllDayPanel,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import App from '../App';
 
 
 function ScheduleComponent(props) {
 
 
     const currentDate = Date.now();
+    const bookData = props.data;
 
-    const startdate = props.data.date;
-    const enddate = new Date(startdate);
 
-    enddate.setMinutes(startdate.getMinutes() + props.data.service.serviceDuration);
-    console.log(startdate);
-    console.log(enddate);
+    const appoinmentsAPI = "https://localhost:44345/api/Appoinments/" + bookData.bussinessId + "/employee/" + bookData.employeeId;
+    const [appoinments, setAppoinments] = useState([]);
 
-    //console.log(props.data.service.serviceDuration)
+    useEffect(() => {
 
-    const appointments = [
-        { title: props.data.service.serviceName, startDate: startdate, endDate: enddate }
-    ];
+        fetch(appoinmentsAPI)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                getAppoinments(data);
+            })
+            .catch(err => console.log(err))
+
+    }, []);
+
+    const getAppoinments = (fetchedData) => {
+        const newAppoinments = [];
+        for (var elem of fetchedData)
+        {
+            const appStartDate = new Date(elem.appoinmentDate);
+            
+           
+            const endAppDate = new Date(appStartDate);
+            endAppDate.setMinutes(appStartDate.getMinutes() + elem.serviceDuration);
+
+                const appoinmentsData = {
+                    title: elem.serviceName,
+                    startDate: appStartDate,
+                    endDate: endAppDate
+            }
+            newAppoinments.push(appoinmentsData);
+        }
+
+        setAppoinments(newAppoinments);
+       
+    }
+
+
 
 
     return (
@@ -35,7 +64,7 @@ function ScheduleComponent(props) {
             <br></br>
             <Paper>
                 <Scheduler
-                    data={appointments}
+                    data={appoinments}
                     height={660}
                 >
                     <ViewState
