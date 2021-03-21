@@ -12,29 +12,27 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import ScheduleComponent from './ScheduleComponent';
-import ModalMessageComponent from './ModalMessageComponent';
+import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 function AppoinmentComponent(props) {
 
 
     
     const [startDate, setStartDate] = useState(new Date());
-
-   
- 
-   
+  
+    const [linkButton, setLinkButton] = useState();
 
     const makeAppoinment = (appoinmentDate) => {
         const bookData = props.data;
       
         bookData.date = appoinmentDate;
 
-        const schedule = (
-            <ScheduleComponent data={bookData}></ScheduleComponent>
-        );
-        addAppoinmentToDb(bookData);
-        props.bookComp(schedule);
+
+        checkAppoinment(bookData);
+        
     }
+
+
     const filterPassedTime = time => {
         const currentDate = new Date();
         const selectedDate = new Date(time);
@@ -42,10 +40,12 @@ function AppoinmentComponent(props) {
         return currentDate.getTime() < selectedDate.getTime();
     }
 
-    const addAppoinmentToDb = (bookData) => {
-        const appoinmentsAPI = "https://localhost:44345/api/Appoinments";
+    const checkAppoinment = (bookData) => {
+        
         const correctBookingDate = new Date(bookData.date);
         correctBookingDate.setMinutes(correctBookingDate.getMinutes() + 120);
+
+        const appoinmentsAPI = "https://localhost:44345/api/Appoinments/" + bookData.bussinessId + "/employee/" + bookData.employeeId + "/date/" + correctBookingDate.toISOString();
         const sentData = {
             bussinessId: bookData.bussinessId,
             userId: bookData.userId,
@@ -54,23 +54,23 @@ function AppoinmentComponent(props) {
             employeeId: bookData.employeeId
         }
         
-        fetch(appoinmentsAPI, {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(
-                sentData)
-        })
+        fetch(appoinmentsAPI)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                if (data.title != "Bad Request") {
-                    modalConfirm();
-                  
+                if (data==false) {
+
+                    const paymentButton = (
+                        <>
+                            <br></br>
+                            <Link to={{ pathname: "/Payment", propsData: sentData }} className="btn btn-primary"  >Proceed To Payment</Link>
+                        </>
+                    );
+
+                    setLinkButton(paymentButton);
+
                 }
                 else {
-                    alert("nah");
+                    alert("Please choose another hour!");
                 }
               
             })
@@ -80,13 +80,7 @@ function AppoinmentComponent(props) {
 
     }
 
-    const modalConfirm = () => {
-        const modalDiv = document.getElementById("ModalConfirmation");
-        
-        const modal = document.createElement("ModalMessageComponent");
-        ReactDOM.render(modalDiv, modal);
-    }
-
+    
 
 
     return (
@@ -101,9 +95,10 @@ function AppoinmentComponent(props) {
                 />
                 <button className="btn btn-primary" onClick={() => makeAppoinment(startDate)} >Book Now!</button>
             </div>
-            <div id="ModalConfirmation">
+            <ScheduleComponent data={props.data}></ScheduleComponent>
+            <div id="paymentButtonDiv">
+                {linkButton}
             </div>
-            
         </div>
     );
 

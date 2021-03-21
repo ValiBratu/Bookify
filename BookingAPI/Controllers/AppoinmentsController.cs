@@ -156,6 +156,78 @@ namespace BookingAPI
             return query.ToList();
         }
 
+
+        [HttpGet("{id}/employee/{employeeId}/date/{date}")]
+        public async Task<ActionResult<bool>> CheckAppoinmentWithSameDateExists(int id, int employeeId,string date)
+        {
+            var appoinments = await _context.Appoinments.ToListAsync();
+
+            bool AppoinmentExists = false;
+            var dateTime = DateTime.Parse(date);
+            var appoinmentsByBussinessAndEmployee = from appoinment in appoinments
+                                                    where appoinment.EmployeeId.Equals(employeeId) && appoinment.BussinessId.Equals(id)
+                                                    select appoinment;
+
+            var query = from appoinment in appoinmentsByBussinessAndEmployee
+                        where checkAppoinmentsWithSameDate(appoinment.Date, dateTime)
+                        select appoinment;
+
+            if (query.Any())
+            {
+                AppoinmentExists = true;
+            }
+            return AppoinmentExists;
+
+        }
+
+
+        [HttpGet("{id}/employee/{employeeId}/user/{userId}/service/{serviceId}")]
+        public async Task<ActionResult<IEnumerable<dynamic>>> AppoinmentDetails(int id, int employeeId,int userId,int serviceId)
+        {
+
+            var bussiness = await _context.Bussinesses.FindAsync(id);
+            var employee = await _context.Employees.FindAsync(employeeId);
+
+            var services = await _context.Services.FindAsync(serviceId);
+
+            var users = await _context.Users.FindAsync(userId);
+
+            List<dynamic> query = new List<dynamic>();
+           
+
+
+            var objectQuery = new
+            {
+                BussinessName = bussiness.Name,
+                BussinessPhone = bussiness.PhoneNumber,
+                ServiceName = services.Name,
+                Price = services.ServicePrice,
+                EmployeeName = employee.Name,
+                UserName = users.FirstName
+            };
+
+            query.Add(objectQuery);
+
+            return query;
+        }
+
+
+
+        private bool checkAppoinmentsWithSameDate(DateTime firstDate,DateTime secondDate)
+        {
+            if ((firstDate.Year == secondDate.Year) &&
+               (firstDate.Month == secondDate.Month) &&
+               (firstDate.Day == secondDate.Day) &&
+               (firstDate.Hour == secondDate.Hour-2) &&
+               (firstDate.Minute == secondDate.Minute))
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+
         private bool checkIfAppoinmentExists(Appoinment firstAppoinment, Appoinment secondAppoinment)
         {
 

@@ -13,6 +13,7 @@ import RegisterPage from './components/RegisterPage';
 import Login from './components/Login';
 import MapComponent from './components/MapComponent';
 import RegisterBussiness from './components/RegisterBussiness';
+import AppoinmentPaymentComponent from './components/AppoinmetPaymentComponent';
 
 function App() {
 
@@ -34,12 +35,13 @@ function App() {
 
                     <Route exact path="/Login" component={Login}></Route>
 
-                   
+                    <Route exact path="/Payment" component={AppoinmentPaymentComponent}></Route>
 
                     <Route exact path="/bussiness/{id}"  >
                         <NavMenu></NavMenu>
                         <Bussinesses site={"https://localhost:44345/api/BussinessByCategories/3%22%7D%3E</Bussinesses>"} />
                     </Route>
+               
             </Switch>
             </div>
             <Footer></Footer>
