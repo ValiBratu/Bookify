@@ -12,11 +12,26 @@ function EditBussinessComponent(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [bussinessPhoto, setBussinessPhoto] = useState();
 
 
     const saveButtonOnClick = () => {
         handleSaveChanges();
         handleClose();
+    }
+
+    const getImageOnChange = (e) => {
+        const files = Array.from(e.target.files)
+
+        const formData = new FormData();
+
+        files.forEach((file, i) => {
+            formData.append(i, file)
+        })
+
+        console.log(formData);
+        setBussinessPhoto(files[0]);
+        
     }
 
     
@@ -28,20 +43,24 @@ function EditBussinessComponent(props) {
         const phone = document.getElementById("phoneNumber").value;
         const email = document.getElementById("email").value;
         const location = document.getElementById("location").value;
-        console.log(document.getElementById("customFile").value);
+        
+        
+       
         editBussiness(parseInt(props.id),
             props.userId,
             name,
             description,
             phone,
             email,
-            location,);
+            location,
+            bussinessPhoto
+            );
 
     }
 
 
 
-    const editBussiness = (BussinessId,userid,BussinessName, BussinessDescription, BussinessPhone,BussinessEmail,BussinessLocation) => {
+    const editBussiness = (BussinessId,userid,BussinessName, BussinessDescription, BussinessPhone,BussinessEmail,BussinessLocation,BussinessPhoto) => {
 
         const editApi = "https://localhost:44345/api/Bussinesses/" + BussinessId;
 
@@ -55,7 +74,7 @@ function EditBussinessComponent(props) {
             phoneNumber: BussinessPhone,
 
             description: BussinessDescription,
-
+            photo: BussinessPhoto
 
 
         }
@@ -63,10 +82,11 @@ function EditBussinessComponent(props) {
         fetch(editApi, {
             method: 'PUT',
             headers: {
-                'Content-type': 'application/json'
+
+                'Content - Type': 'multipart / form - data'
             },
-            body: JSON.stringify(
-                sentData)
+            //body: JSON.stringify(sentData)
+            body: sentData
         })
             .then(response => { console.log(response)})
             .then(data => {
@@ -133,7 +153,7 @@ function EditBussinessComponent(props) {
 
                     <label className="form-label" htmlFor="customFile">Bussiness Default Photo</label>
                     <div className="input-group">
-                        <input type="file" className="form-control" id="customFile" />
+                        <input type="file" accept="image/png, image/jpeg" className="form-control" id="customFile" onChange={getImageOnChange} />
                     </div>
                     <br></br>
 
