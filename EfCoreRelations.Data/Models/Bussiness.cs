@@ -43,8 +43,8 @@ namespace EfCoreRelations.Data.Models
         public string Description { get; set; }
         public float Rating { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] Photo { get; set; }
+
+        public string Photo { get; set; }
 
         public ICollection<Review> Reviews { get; set; }
 

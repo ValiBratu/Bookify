@@ -12,7 +12,7 @@ function EditBussinessComponent(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [bussinessPhoto, setBussinessPhoto] = useState();
+    let bussinessPhoto;
 
 
     const saveButtonOnClick = () => {
@@ -21,16 +21,24 @@ function EditBussinessComponent(props) {
     }
 
     const getImageOnChange = (e) => {
-        const files = Array.from(e.target.files)
+        //const files = Array.from(e.target.files)
+        //console.log(files);
+       
+        //console.log(typeof files[0]);
 
-        const formData = new FormData();
-
-        files.forEach((file, i) => {
-            formData.append(i, file)
-        })
-
-        console.log(formData);
-        setBussinessPhoto(files[0]);
+        var fileList = document.getElementById("customFile").files;
+        console.log(fileList);
+        var fileReader = new FileReader();
+        if (fileReader && fileList && fileList.length) {
+            fileReader.readAsArrayBuffer(fileList[0]);
+            fileReader.onload = function () {
+                var imageData = fileReader.result;
+                console.log(imageData);
+                
+                let base64String = btoa(String.fromCharCode(...new Uint8Array(imageData)));
+                bussinessPhoto = base64String;
+            };
+        }
         
     }
 
@@ -43,7 +51,7 @@ function EditBussinessComponent(props) {
         const phone = document.getElementById("phoneNumber").value;
         const email = document.getElementById("email").value;
         const location = document.getElementById("location").value;
-        
+
         
        
         editBussiness(parseInt(props.id),
@@ -75,6 +83,8 @@ function EditBussinessComponent(props) {
 
             description: BussinessDescription,
             photo: BussinessPhoto
+           
+           
 
 
         }
@@ -82,13 +92,12 @@ function EditBussinessComponent(props) {
         fetch(editApi, {
             method: 'PUT',
             headers: {
-
-                'Content - Type': 'multipart / form - data'
+                'Content-type': 'application/json'
             },
-            //body: JSON.stringify(sentData)
-            body: sentData
+            body: JSON.stringify(sentData)
+            //body: sentData
         })
-            .then(response => { console.log(response)})
+            .then(response => { console.log(response) })
             .then(data => {
                 console.log(data);
 

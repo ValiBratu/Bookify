@@ -4,14 +4,16 @@ using EfCoreRelations.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EfCoreRelations.Data.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    partial class BookingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210323114356_AddBack_Column_Photo_as_String_BussinessTable")]
+    partial class AddBack_Column_Photo_as_String_BussinessTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,8 +31,8 @@ namespace EfCoreRelations.Data.Migrations
                     b.Property<int>("BussinessId")
                         .HasColumnType("int");
 
-                    b.Property<string>("BussinessImage")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("BussinessImage")
+                        .HasColumnType("image");
 
                     b.HasKey("Id");
 

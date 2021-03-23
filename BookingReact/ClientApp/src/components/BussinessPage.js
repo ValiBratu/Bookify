@@ -7,6 +7,7 @@ import EmployeesCompponent from './EmployeesComponent';
 import EditBussinessComponent from './EditBussinessComponentcs';
 import AddServiceComponent from './AddServiceComponent';
 import AddEmployeeComponent from './AddEmployeeComponent';
+import WorkPlaceComponent from './WorkPlaceComponent';
 
 const BussinessPage = (props) => {
 
@@ -32,7 +33,10 @@ const BussinessPage = (props) => {
         fetch(bussinessPageApi + props.match.params.id)
             .then(response => response.json())
             .then(data => {
-             
+
+                if (data.photo) {
+                    data.photo = "data:image/jpeg;base64," + data.photo;
+                }
                 setbussinessDetails(data);
                 
             })
@@ -99,11 +103,33 @@ const BussinessPage = (props) => {
 
     }
 
+    const renderWorkPlace = (id) => {
+        makeIconsSameClass();
+
+        const workPlaceComp = (<div>
+            <h2 style={{ textAlign: "center" }} >Work Place</h2>
+            <div id="workplace">
+                <WorkPlaceComponent id={id}></WorkPlaceComponent>
+
+            </div>
+        </div>);
+
+        const placeIcon = document.getElementById("placeIcon");
+        placeIcon.setAttribute("class", "nav-link active");
+
+        updateComponent(workPlaceComp);
+
+    }
+
 
     const updateComponent = (comp) => {
         setBookingComponents(comp);
     }
-
+    const photoStyle = {
+        width: "1000px",
+        height: "300px",
+        marginLeft:"60px"
+    }
 
     return (
         <div>
@@ -126,19 +152,26 @@ const BussinessPage = (props) => {
                         <AddEmployeeComponent BussinessId={props.match.params.id}></AddEmployeeComponent>
               <div className="row">
                 <div className="col-md-6 ml-auto mr-auto">
-                  <div className="profile">
+                    <div className="profile">
 
                     <div className="name">
-                      <h3 className="title">{bussinessDetails.name}'s Page</h3>
+                        <h3 className="title">{bussinessDetails.name}'s Page</h3>
+
                       <h6>Barber Shop</h6>
                       <a href="#pablo" className="btn btn-just-icon btn-link btn-dribbble"><i className="fa fa-dribbble" /></a>
                       <a href="#pablo" className="btn btn-just-icon btn-link btn-twitter"><i className="fa fa-twitter" /></a>
                       <a href="#pablo" className="btn btn-just-icon btn-link btn-pinterest"><i className="fa fa-pinterest" /></a>
                     </div>
-                                    
-                  </div>
+       
+                    </div>
+
                 </div>
-              </div>
+               </div>
+
+                <img style={photoStyle} alt="image2.jpg"
+                            src={bussinessDetails.photo} />
+                 <br></br>
+
               <div className="description text-center">
                 <p className="card-text">{bussinessDetails.description}</p>
               </div>
@@ -163,8 +196,8 @@ const BussinessPage = (props) => {
                           <i className="material-icons">camera</i> Location
                         </a>
                       </li>
-                      <li className="nav-item">
-                        <a className="nav-link" id="placeIcon"  role="tab" data-toggle="tab">
+                        <li className="nav-item">
+                            <a className="nav-link" id="placeIcon" onClick={() => renderWorkPlace(bussinessDetails.id)} role="tab" data-toggle="tab">
                           <i className="material-icons">palette</i> Working place
                         </a>
                       </li>

@@ -14,8 +14,7 @@ namespace BookingAPI.Models
 
         public int BussinessId { get; set; }
 
-        [Column(TypeName = "image")]
-        public byte[] BussinessImage { get; set; }
+       public string BussinessImage { get; set; }
 
 
     }

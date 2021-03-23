@@ -45,15 +45,15 @@ namespace BookingAPI.Controllers
         // PUT: api/Bussinesses/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
         
-        public async Task<IActionResult> PutBussiness(int id, [FromBody]Bussiness bussiness, List<IFormFile> photo)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutBussiness(int id, [FromBody]Bussiness bussiness)
         {
             if (!_context.Bussinesses.Any(b => b.Id == id))
             {
                 return BadRequest();
             }
-            
+
             try
             {
                 var currentBussiness = _context.Bussinesses.Single(b => b.Id == id);
@@ -64,7 +64,7 @@ namespace BookingAPI.Controllers
                 currentBussiness.Location = bussiness.Location;
                 currentBussiness.Email = bussiness.Email;
                 currentBussiness.Photo = bussiness.Photo;
-                
+
                 await _context.SaveChangesAsync();
                 //return CreatedAtAction("GetBussiness", new { id = bussiness.Id }, bussiness);
             }
@@ -72,7 +72,7 @@ namespace BookingAPI.Controllers
             {
 
                 throw;
-                
+
             }
 
             return NoContent();
