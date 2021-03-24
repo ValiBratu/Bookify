@@ -78,7 +78,7 @@ function AddImageComponent(props) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="primary" style={{ marginLeft:"480px"}} onClick={handleShow}>
                 Add new image
             </Button>
 

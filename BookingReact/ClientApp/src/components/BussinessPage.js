@@ -168,10 +168,6 @@ const BussinessPage = (props) => {
                 </div>
                </div>
 
-                <img style={photoStyle} alt="image2.jpg"
-                            src={bussinessDetails.photo} />
-                 <br></br>
-
               <div className="description text-center">
                 <p className="card-text">{bussinessDetails.description}</p>
               </div>
