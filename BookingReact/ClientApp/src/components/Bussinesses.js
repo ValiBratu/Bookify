@@ -83,16 +83,27 @@ function Bussinesses(props) {
             <br></br>
             <div className="container">
                 
-                {bussinessList.map((data, i) => (
-                    <div className="card" key={i}>
 
-                        <div className="card-body">
-                            <h5 className="card-title">{data.name}</h5>
-                            <p className="card-text">{data.description}</p>
-                            <Link to={BussinessUrl + data.id} className="btn btn-primary">Show Details.</Link>
+                <div className="row">
+
+                    {bussinessList.map((bussiness, i) => (
+                        <div className="col col-lg-3" id={bussiness.id} key={i} style={{ marginRight:"40px" }}>
+
+                            <div className="card" style={{ width: '18rem', height: "400px" }}>
+                                <img className="card-img-top" src={"data:image/jpeg;base64," + bussiness.photo} style={{ height:"200px" }} alt="Card image cap" />
+                                <div className="card-body">
+                                    <h5 className="card-title">{ bussiness.name}</h5>
+                                    <p className="card-text">Location: {bussiness.location}</p>
+                                    <p className="card-text">Phone number: {bussiness.phoneNumber}</p>
+                                    <Link to={BussinessUrl + bussiness.id} className="btn btn-primary">Show Details.</Link>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
-                ))}
+
+                    ))}
+
+                </div>
             </div>
         </section>
 

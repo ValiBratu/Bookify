@@ -162,7 +162,7 @@ function EditBussinessComponent(props) {
 
                     <label className="form-label" htmlFor="customFile">Bussiness Default Photo</label>
                     <div className="input-group">
-                        <input type="file" accept="image/png, image/jpeg" className="form-control" id="customFile" onChange={getImageOnChange} />
+                        <input type="file" accept=" image/jpeg" className="form-control" id="customFile" onChange={getImageOnChange} />
                     </div>
                     <br></br>
 
