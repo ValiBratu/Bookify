@@ -2,7 +2,8 @@
 import './material-kit.css'
 import { Modal, Button } from 'react-bootstrap';
 import Select from 'react-select';
-
+import AppoinmentCompleteComponent from './AppoinmentCompleteComponent';
+import ReactDOM from 'react-dom';
 
 const AppoinmentPaymentComponent=(props)=> {
 
@@ -65,6 +66,7 @@ const AppoinmentPaymentComponent=(props)=> {
         warning.textContent = "";
         
         addAppoinmentToDB();
+        reworkNeeded();
     }
 
     const addAppoinmentToDB = () => {
@@ -96,9 +98,17 @@ const AppoinmentPaymentComponent=(props)=> {
             })
     }
 
+    const reworkNeeded = () => {
+        const mainDiv = document.getElementById("mainDiv");
+
+        const toReworkAfter = (
+            <AppoinmentCompleteComponent></AppoinmentCompleteComponent>
+        );
+        ReactDOM.render(toReworkAfter, mainDiv);
+    }
    
     return (
-        <div>
+        <div id="mainDiv">
             <br></br>
             <br></br>
             <br></br>
