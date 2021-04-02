@@ -20,5 +20,9 @@
     <ProjectReference Include="..\EfCoreRelations.Data\EfCoreRelations.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Authentication\" />
+  </ItemGroup>
+
 
 </Project>

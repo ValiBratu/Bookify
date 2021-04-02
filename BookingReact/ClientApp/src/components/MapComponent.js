@@ -1,9 +1,14 @@
-﻿import React from 'react';
+﻿import React, { useState,useEffect} from 'react';
 import { ReactBingmaps } from 'react-bingmaps';
 
 
 
 function MapComponent(props) {
+
+
+
+
+
 
     const mapStyle = {
         height: "600px",
@@ -12,13 +17,16 @@ function MapComponent(props) {
         marginTop: "50px",
         marginLeft:"-40px"
     }
+
   
     const pushPins = [
         {
             "location": [props.latitude, props.longitude], "option": { color: 'red' }, "addHandler": { "type": "click" }
         }
     ];
+
     const latAndLong = [props.latitude, props.longitude];
+
     return (
         <div style={mapStyle}>
             <ReactBingmaps

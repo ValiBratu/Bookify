@@ -24,6 +24,7 @@ const BussinessPage = (props) => {
 
     });
 
+
     const [bookingComponents, setBookingComponents] = useState();
     
     useEffect(() => {
@@ -41,7 +42,7 @@ const BussinessPage = (props) => {
                 
             })
             .catch(err => console.log(err))
-        
+       
     }, [bussinessPageApi]);
 
 
@@ -56,14 +57,35 @@ const BussinessPage = (props) => {
 
     }
 
-    const renderMap = () => {
+
+    const fetchLatAndLong = () => {
+
+
+
+        const geocodingApiKey = "AIzaSyDJofOQIFypBaj7MvcmCJkqtz5PhyuMU0c";
+        const loc = bussinessDetails.location;
+        const apiUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + loc + "&key=" + geocodingApiKey;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.results[0].geometry.location);
+                renderMap(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+            })
+            .catch(err => console.log(err))
+
+    }
+
+  
+    const renderMap = (latitude,longitude) => {
 
         makeIconsSameClass();
 
+
         let Map = (
             <MapComponent
-                latitude={bussinessDetails.latitude}
-                longitude={bussinessDetails.longitude}>
+                latitude={latitude}
+                longitude={longitude}>
 
             </MapComponent>
         );
@@ -187,8 +209,8 @@ const BussinessPage = (props) => {
                 <div className="col-md-6 ml-auto mr-auto">
                   <div className="profile-tabs">
                     <ul className="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                    <li className="nav-item">
-                        <a className="nav-link" id="locationIcon" onClick={renderMap} role="tab" data-toggle="tab">
+                                        <li className="nav-item">
+                                            <a className="nav-link" id="locationIcon" onClick={fetchLatAndLong} role="tab" data-toggle="tab">
                           <i className="material-icons">camera</i> Location
                         </a>
                       </li>
