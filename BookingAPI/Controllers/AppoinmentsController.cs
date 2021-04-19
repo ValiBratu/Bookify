@@ -130,7 +130,7 @@ namespace BookingAPI
 
             var services = await _context.Services.ToListAsync();
 
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.WebsiteUsers.ToListAsync();
 
             var appoinments = await _context.Appoinments.ToListAsync();
 
@@ -190,7 +190,7 @@ namespace BookingAPI
 
             var services = await _context.Services.FindAsync(serviceId);
 
-            var users = await _context.Users.FindAsync(userId);
+            var users = await _context.WebsiteUsers.FindAsync(userId);
 
             List<dynamic> query = new List<dynamic>();
            

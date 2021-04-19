@@ -1,5 +1,6 @@
 ﻿using BookingAPI.Models;
 using EfCoreRelations.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,12 +8,12 @@ using System.Text;
 
 namespace EfCoreRelations.Data
 {
-    public class BookingDbContext:DbContext
+    public class BookingDbContext: IdentityDbContext<ApplicationUser>
     {
         public BookingDbContext(DbContextOptions<BookingDbContext> options) : base(options) { }
 
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> WebsiteUsers { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
 
         public DbSet<City> Cities { get; set; }
@@ -33,7 +34,7 @@ namespace EfCoreRelations.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

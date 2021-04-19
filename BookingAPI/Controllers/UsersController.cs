@@ -23,16 +23,16 @@ namespace BookingAPI.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetWebsiteUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.WebsiteUsers.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.WebsiteUsers.FindAsync(id);
 
             if (user == null)
             {
@@ -80,7 +80,7 @@ namespace BookingAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Users.Add(user);
+            _context.WebsiteUsers.Add(user);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
@@ -90,13 +90,13 @@ namespace BookingAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<User>> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.WebsiteUsers.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(user);
+            _context.WebsiteUsers.Remove(user);
             await _context.SaveChangesAsync();
 
             return user;
@@ -104,7 +104,7 @@ namespace BookingAPI.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.WebsiteUsers.Any(e => e.Id == id);
         }
     }
 }

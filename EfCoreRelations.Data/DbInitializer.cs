@@ -95,7 +95,7 @@ namespace EfCoreRelations.Data
                 }
 
             };
-            context.Users.AddRange(users);
+            context.WebsiteUsers.AddRange(users);
             context.SaveChanges();
 
 
