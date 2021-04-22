@@ -130,7 +130,7 @@ namespace BookingAPI
 
             var services = await _context.Services.ToListAsync();
 
-            var users = await _context.WebsiteUsers.ToListAsync();
+
 
             var appoinments = await _context.Appoinments.ToListAsync();
 
@@ -140,13 +140,11 @@ namespace BookingAPI
 
             var query = from appoinment in appoinmentsByBussinessAndEmployee
                         join service in services on appoinment.ServiceId equals service.Id
-                        join user in users on appoinment.UserId equals user.Id
+                        
                         select new
                         {
                             EmployeeName = employee.Name,
                             EmployeeId = employee.Id,
-                            UserName = user.FirstName + " " + user.LastName,
-                            UserId = user.Id,
                             ServiceName = service.Name,
                             Price = service.ServicePrice,
                             ServiceDuration = service.Duration,
@@ -203,7 +201,7 @@ namespace BookingAPI
                 ServiceName = services.Name,
                 Price = services.ServicePrice,
                 EmployeeName = employee.Name,
-                UserName = users.FirstName
+                UserName = users.UserName
             };
 
             query.Add(objectQuery);

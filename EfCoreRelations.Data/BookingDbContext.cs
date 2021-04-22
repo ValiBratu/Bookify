@@ -13,8 +13,8 @@ namespace EfCoreRelations.Data
         public BookingDbContext(DbContextOptions<BookingDbContext> options) : base(options) { }
 
 
-        public DbSet<User> WebsiteUsers { get; set; }
-        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<ApplicationUser> WebsiteUsers { get; set; }
+        
 
         public DbSet<City> Cities { get; set; }
 

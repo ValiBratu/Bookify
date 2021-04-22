@@ -6,16 +6,14 @@ const RegisterPage = (props) => {
 
 
     const [userInfo, setUserInfo] = useState({
-        FirstName: "",
-        LastName: "",
-        typeId:4,
+        Username: "",
         Email: "",
         PhoneNumber: "",
         Password: "",
         ConfirmPass: ""
     });
 
-    const sentDataAPI = "https://localhost:44345/api/Users";
+    const sentDataAPI = "https://localhost:44345/api/Authenticate/register";
 
     const pStyle = {
         margin: "0 auto",
@@ -27,7 +25,7 @@ const RegisterPage = (props) => {
 
    const getInputValues = (event) => {
        const warning = document.getElementById("warning");
-       if (userInfo.FirstName == "" || userInfo.LastName == "" || userInfo.Email == "" || userInfo.Phone == "" || userInfo.Password == "" || userInfo.ConfirmPass == "") {
+       if (userInfo.Username == "" || userInfo.Email == "" || userInfo.Phone == "" || userInfo.Password == "" || userInfo.ConfirmPass == "") {
           
            warning.textContent = "All fields must be completed!";
            return;
@@ -40,7 +38,7 @@ const RegisterPage = (props) => {
            return;
        }
        warning.textContent = "";
-
+       console.log(userInfo);
        fetch(sentDataAPI, {
            method: 'POST',
            headers: {
@@ -64,7 +62,7 @@ const RegisterPage = (props) => {
             ...userInfo,
             [event.target.name]: event.target.value
         });
-        console.log(userInfo.FirstName);
+       
 
     };
 
@@ -121,16 +119,9 @@ const RegisterPage = (props) => {
                                                         <i className="material-icons">face</i>
                                                     </span>
                                                 </div>
-                                            <input type="text" className="form-control" placeholder="First Name..." name="FirstName" id="FirstName" onChange={handleInput} />
+                                            <input type="text" className="form-control" placeholder="UserName..." name="Username" id="Username" onChange={handleInput} />
                                             </div>
-                                        <div className="input-group">
-                                                <div className="input-group-prepend">
-                                                    <span className="input-group-text">
-                                                        <i className="material-icons">face</i>
-                                                    </span>
-                                                </div>
-                                            <input type="text" className="form-control" placeholder="Last Name..." name="LastName" id="LastName" onChange={handleInput} />
-                                            </div>
+
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
                                                     <span className="input-group-text">

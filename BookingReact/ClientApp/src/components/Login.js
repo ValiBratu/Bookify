@@ -11,6 +11,47 @@ function Login() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+
+    const getInputValues = () => {
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        loginFunction(email, password);
+
+    }
+
+    const loginFunction = (email, password) => {
+
+        const loginApiRoute = "https://localhost:44345/api/Authenticate/login";
+
+        const sentData = {
+            Email: email,
+            Password: password
+        }
+
+        fetch(loginApiRoute, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(
+                sentData)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
+
+    }
+
+
         return (
             <div>
         <meta charSet="utf-8" />
@@ -59,7 +100,7 @@ function Login() {
                                                         <i className="material-icons">mail</i>
                                                     </span>
                                                 </div>
-                                                <input type="email" className="form-control" placeholder="Email..." />
+                                                <input type="email" name="email" id="email" className="form-control" placeholder="Email..." />
                                             </div>
                                             <div className="input-group">
                                                 <div className="input-group-prepend">
@@ -67,11 +108,11 @@ function Login() {
                                                         <i className="material-icons">lock_outline</i>
                                                     </span>
                                                 </div>
-                                                <input type="password" className="form-control" placeholder="Password..." />
+                                                <input type="password" name="password" id="password" className="form-control" placeholder="Password..." />
                                             </div>
                                         </div>
                                         <div className="footer text-center">
-                                            <a href="#pablo" className="btn btn-primary btn-link btn-wd btn-lg">Login</a>
+                                            <button type="button" href="" className="btn btn-primary btn-link btn-wd btn-lg" onClick={getInputValues}>Login</button>
                                         </div>
                                     </form>
                                 </div>

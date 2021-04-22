@@ -48,6 +48,12 @@ namespace BookingReact
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
+            app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) // allow any origin
+                    .AllowCredentials());
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

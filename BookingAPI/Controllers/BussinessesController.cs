@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EfCoreRelations.Data;
 using EfCoreRelations.Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookingAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BussinessesController : ControllerBase
@@ -71,7 +73,7 @@ namespace BookingAPI.Controllers
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
 
             }
 

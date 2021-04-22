@@ -11,20 +11,7 @@ namespace EfCoreRelations.Data
     {
         public static void Initialize(BookingDbContext context)
         {
-            if (context.UserTypes.Any())
-            {
-                return;
-            }
-            var userTypes = new UserType[]
-            {
-                new UserType{Name="Normal"},
-                new UserType{Name="Owner"},
-                new UserType{Name="Admin"},
 
-            };
-
-            context.UserTypes.AddRange(userTypes);
-            context.SaveChanges();
 
             if (context.Cities.Any())
             {
@@ -59,39 +46,35 @@ namespace EfCoreRelations.Data
 
 
 
-            if (context.Users.Any())
+            if (context.WebsiteUsers.Any())
             {
                 return;
             }
-            var users = new User[]
+            var users = new ApplicationUser[]
             {
-                new User
+                new ApplicationUser
                 {
-                    FirstName= "Karin",
-                    LastName= "Hopper",
-                    TypeId= 4,
+                    UserName= "Karin Hopper",
                     Email= "karinhopper@farmex.com",
                     PhoneNumber= "+40 (889) 555-3238",
-                    Password= "12345"
+                    PasswordHash= "12345"
                 },
 
-                new User
+                new ApplicationUser
                 {
-                    FirstName="Cort",
-                    LastName="Caplen",
+                    UserName="Cort Caplen",
                     Email="ccaplen0@va.gov",
-                    TypeId=5,
                     PhoneNumber="+1 815 355 6522",
-                    Password="fM100s8khu7d"
+                    PasswordHash="fM100s8khu7d"
                 },
-                new User
+                new ApplicationUser
                 {
-                    FirstName="Jacqueline",
-                    LastName="Scurrell",
+                    UserName="Jacqueline Scurrell",
+
                     Email="jscurrell1@techcrunch.com",
-                    TypeId=5,
+
                     PhoneNumber="+52 259 425 1371",
-                    Password="nfIElu0sUf"
+                    PasswordHash="nfIElu0sUf"
                 }
 
             };
