@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import './material-kit.css'
 import { Link } from 'react-router-dom';
-
+import { useGlobalUser } from './utils/AuthContext';
 function NavMenu() {
     let [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -12,6 +12,11 @@ function NavMenu() {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const { user, logout } = useGlobalUser();
+
+
+
+
 
     return (
         <div>
@@ -45,21 +50,43 @@ function NavMenu() {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                 </div>
-                <div className="collapse navbar-collapse">
+                    <div className="collapse navbar-collapse">
+
+                            {user.Auth ? (
+                                <ul className="navbar-nav ml-auto" style={{ height:"40px" }}>
+                                    <li className="nav-item">
+                                      <h4>
+                                        <div className="navbar-brand">
+                                            <strong style={{ color: "purple" }}>{user.Name}</strong>
+                                            </div>
+                                        </h4>
+                                    </li>
+
+                                    <li className="nav-item">
+                                        <button type="button"  className="btn btn-primary btn-link btn-wd btn-lg" onClick={logout}>
+                                        <div className="nav-link" target="blank">
+                                            <i className="material-icons"></i> Log out
+                                        </div>
+                                       </button>
+                                    </li>
+                                </ul>
+
+                            ): (
+                                   
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
                                     <Link to="/Login">
                                         <div className="nav-link" target="blank">
                                             <i className="material-icons">unarchive</i> Log in
                                             </div>
-            </Link>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link to="/Register">
                                         <div className="nav-link" target="blank">
                                             <i className="material-icons">unarchive</i> Register
                                             </div>
-            </Link>
+                             </Link>
                                 </li>
                         <li className="nav-item">
                             <a className="nav-link" rel="tooltip" title="" data-placement="bottom" href="" target="_blank" data-original-title="Follow us on Twitter" rel="nofollow">
@@ -76,7 +103,8 @@ function NavMenu() {
                                 <i className="fa fa-instagram"></i>
                             </a>
                         </li>
-                    </ul>
+                                    </ul>
+                                )}
                 </div>
             </div>
                 </nav>

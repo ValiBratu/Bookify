@@ -8,6 +8,8 @@ import EditBussinessComponent from './EditBussinessComponentcs';
 import AddServiceComponent from './AddServiceComponent';
 import AddEmployeeComponent from './AddEmployeeComponent';
 import WorkPlaceComponent from './WorkPlaceComponent';
+import { useGlobalUser } from './utils/AuthContext';
+
 
 const BussinessPage = (props) => {
 
@@ -15,12 +17,14 @@ const BussinessPage = (props) => {
     const [bussinessDetails, setbussinessDetails] = useState([]);
     const bussinessPageApi = "https://localhost:44345/api/Bussinesses/";
 
+    const { user } = useGlobalUser();
+
     const [bookingData, setbookingData] = useState({
         bussinessId: null,
         serviceId:null,
         employeeId: null,
         date: null,
-        userId:1
+        userId:user.Id
 
     });
 
@@ -165,13 +169,19 @@ const BussinessPage = (props) => {
 
         <div className="main main-raised">
           <div className="profile-content">
-            <div className="container">
-                <br></br>
-                        <EditBussinessComponent id={props.match.params.id} businessDetails={bussinessDetails}></EditBussinessComponent>
-                        
-                        <AddServiceComponent BussinessId={props.match.params.id}></AddServiceComponent>
+        <div className="container">
 
-                        <AddEmployeeComponent BussinessId={props.match.params.id}></AddEmployeeComponent>
+                        {user.Role === "Admin" ? (
+                            <>
+                                <br></br>
+                                <EditBussinessComponent id={props.match.params.id} businessDetails={bussinessDetails}></EditBussinessComponent>
+
+                                <AddServiceComponent BussinessId={props.match.params.id}></AddServiceComponent>
+
+                                <AddEmployeeComponent BussinessId={props.match.params.id}></AddEmployeeComponent>
+                            </>) : (<>
+
+                            </>)}
               <div className="row">
                 <div className="col-md-6 ml-auto mr-auto">
                     <div className="profile">

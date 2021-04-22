@@ -2,7 +2,7 @@
 import ReactDOM from 'react-dom';
 import AddImageComponent from './AddImagesComponent';
 
-
+import { useGlobalUser } from './utils/AuthContext';
 
 function WorkPlaceComponent(props) {
 
@@ -22,11 +22,18 @@ function WorkPlaceComponent(props) {
 
     }, []);
 
+    const { user } = useGlobalUser();
+
 
 
     return (
         <>
-            <AddImageComponent id={ props.id}></AddImageComponent>
+            {user.Role === "Admin" ? (
+                <AddImageComponent id={props.id}></AddImageComponent>
+            ) : (
+                    <></>
+                    )}
+            
             <div>
                 <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner">

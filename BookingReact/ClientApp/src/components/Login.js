@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import './material-kit.css'
+import { useGlobalUser } from './utils/AuthContext';
 
 function Login() {
     let [anchorEl, setAnchorEl] = React.useState(null);
@@ -12,6 +13,7 @@ function Login() {
         setAnchorEl(null);
     };
 
+    const { user, login } = useGlobalUser();
 
     const getInputValues = () => {
 
@@ -41,16 +43,42 @@ function Login() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+
+                if (data.token) {
+
+                    parseJwt(data.token);
+                }
+                
 
             })
             .catch(error => {
                 console.log(error)
             })
-
+        
 
     }
 
+
+    function parseJwt(token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+       
+        console.log(JSON.parse(jsonPayload));
+
+        const userData = {
+            Id: JSON.parse(jsonPayload).id,
+            Name: JSON.parse(jsonPayload)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"],
+            Email: JSON.parse(jsonPayload)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
+            Role: JSON.parse(jsonPayload)["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+        };
+
+        login(userData);
+        
+    };
 
         return (
             <div>

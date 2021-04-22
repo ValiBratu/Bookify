@@ -180,7 +180,7 @@ namespace BookingAPI
 
 
         [HttpGet("{id}/employee/{employeeId}/user/{userId}/service/{serviceId}")]
-        public async Task<ActionResult<IEnumerable<dynamic>>> AppoinmentDetails(int id, int employeeId,int userId,int serviceId)
+        public async Task<ActionResult<IEnumerable<dynamic>>> AppoinmentDetails(int id, int employeeId,string userId,int serviceId)
         {
 
             var bussiness = await _context.Bussinesses.FindAsync(id);
@@ -189,6 +189,9 @@ namespace BookingAPI
             var services = await _context.Services.FindAsync(serviceId);
 
             var users = await _context.WebsiteUsers.FindAsync(userId);
+
+
+
 
             List<dynamic> query = new List<dynamic>();
            

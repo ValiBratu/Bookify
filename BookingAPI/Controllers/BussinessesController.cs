@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BookingAPI.Controllers
 {
-    [Authorize]
+   
     [Route("api/[controller]")]
     [ApiController]
     public class BussinessesController : ControllerBase
