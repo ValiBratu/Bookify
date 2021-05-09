@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BookingAPI",
+    "\\BookingAPI\\Controllers",
+    "\\BookingReact",
+    "\\BookingReact\\ClientApp",
+    "\\BookingReact\\ClientApp\\src",
+    "\\BookingReact\\ClientApp\\src\\components"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\BookingReact\\ClientApp\\src\\components\\ServicesComponent.js",
   "PreviewInSolutionExplorer": false
 }

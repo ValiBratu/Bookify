@@ -2,12 +2,15 @@
 import AddServiceComponent from './AddServiceComponent';
 import ReactDOM from 'react-dom';
 import EmployeesCompponent from './EmployeesComponent';
+import { useGlobalUser } from './utils/AuthContext';
 function ServicesCompponent(props) {
 
     const servicesForBussinessApi = "https://localhost:44345/api/ServicesByBussiness/";
 
     const [services, setServices] = useState([]);
 
+
+    const { user } = useGlobalUser();
     useEffect(() => {
 
         fetchServices();
@@ -78,13 +81,18 @@ function ServicesCompponent(props) {
                     <div className="col col-lg-3" id={service.id} key={i}>
 
                         <div className="card">
-                          
-                            <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteService(service.id)}>delete_sweep</i></a>
+                            {user.Role ==="Admin"? (
+                                <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteService(service.id)}>delete_sweep</i></a>
+                            ) : (<></>)}
+                           
                             <div className="card-body">
                                 <h5 className="card-title">{service.name}</h5>
                                 <p className="card-text">Duration: {service.duration} Minutes</p>
                                 <p className="card-text">Price: {service.servicePrice} RON</p>
-                                <button className="btn btn-primary" onClick={() => showEmployeesAndAddService(service.id,service.name,service.duration)} >Book Now!</button>
+                                {user.Auth ? (
+                                    <button className="btn btn-primary" onClick={() => showEmployeesAndAddService(service.id, service.name, service.duration)} >Book Now!</button>
+                                ): (<></>)}
+                               
                             </div>
                              
                         </div>
