@@ -2,6 +2,7 @@
 import AddServiceComponent from './AddServiceComponent';
 import ReactDOM from 'react-dom';
 import AppoinmentComponent from './AppoinmentComponent';
+import { useGlobalUser } from './utils/AuthContext';
 
 
 function EmployeesCompponent(props) {
@@ -9,6 +10,8 @@ function EmployeesCompponent(props) {
     const EmployeesForBussinessApi = "https://localhost:44345/api/EmployeesForBussiness/";
 
     const [emlpoyees, setEmlpoyees] = useState([]);
+
+    const { user } = useGlobalUser();
 
     useEffect(() => {
 
@@ -79,8 +82,9 @@ function EmployeesCompponent(props) {
                     <div className="col col-lg-3" id={emlpoyee.id} key={i}>
 
                         <div className="card">
-
-                            <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteEmployee(emlpoyee.id)}>delete_sweep</i></a>
+                            {user.Role === "Admin" ? (
+                                <a className="btn btn-just-icon btn-link btn-dribbble" > <i style={trashIconStyle} className="material-icons" onClick={() => deleteEmployee(emlpoyee.id)}>delete_sweep</i></a>
+                            ): (<></>)}
                             <div className="card-body">
                                 <h5 className="card-title">{emlpoyee.name}</h5>
                                 <p className="card-text">Description: {emlpoyee.description}</p>
